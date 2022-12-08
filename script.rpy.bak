@@ -1,0 +1,3188 @@
+﻿define tx = Character("天希",who_font="Gunshihei.ttf",who_color="#055584",who_outlines=[(absolute(1), "#ffffff", absolute(0), absolute(0))])
+define sd = Character("士道",who_font="Gunshihei.ttf",who_color="#ffffff",who_outlines=[(absolute(1), "#0000ff", absolute(0), absolute(0))])
+define yt = Character("十香",who_font="Gunshihei.ttf",who_color="#8605c6",who_outlines=[(absolute(1), "#ffffff", absolute(0), absolute(0))])
+define yn1 = Character("四糸奈",who_font="Gunshihei.ttf",who_color="#0f73d0",who_outlines=[(absolute(1), "#000000", absolute(0), absolute(0))])
+define yn = Character("四糸乃",who_font="Gunshihei.ttf",who_color="#1c3ec5",who_outlines=[(absolute(1), "#000000", absolute(0), absolute(0))])
+define dd = Character("殿町",who_font="Gunshihei.ttf",who_color="#b2222295",who_outlines=[(absolute(1), "#e9e91d", absolute(0), absolute(0))])
+define ly = Character("令音",who_font="Gunshihei.ttf",who_color="#147e70a9",who_outlines=[(absolute(1), "#d5d5b9", absolute(0), absolute(0))])
+define ik = Character("琴里",who_font="Gunshihei.ttf",who_color="#ff0000a9",who_outlines=[(absolute(1), "#10e2aa", absolute(0), absolute(0))])
+define nm = Character("七罪",who_font="Gunshihei.ttf",who_color="#015410a9",who_outlines=[(absolute(1), "#ffffff", absolute(0), absolute(0))])
+define ka = Character('耶俱矢',who_font="Gunshihei.ttf",who_color="#fc3",who_outlines=[(absolute(1), "#000", absolute(0), absolute(0))])
+define yu = Character('夕弦',who_font="Gunshihei.ttf",who_color="#fc3",who_outlines=[(absolute(1), "#000", absolute(0), absolute(0))])
+define to = Character('鸢一折纸',who_font="Gunshihei.ttf",who_color="#fff",who_outlines=[(absolute(1), "#fb3", absolute(0), absolute(0))])
+define ma = Character('万由里',who_font="Gunshihei.ttf",who_color="#ffff00",who_outlines=[(absolute(1), "#fff", absolute(0), absolute(0))])
+
+define rio = Character('凛绪',who_font="Gunshihei.ttf",who_color="#e300df",who_outlines=[(absolute(1), "#d9e005", absolute(0), absolute(0))])
+define my = Character('鞠亚',who_font="Gunshihei.ttf",who_color="#87877b",who_outlines=[(absolute(1), "#000000", absolute(0), absolute(0))])
+define mn = Character('鞠奈',who_font="Gunshihei.ttf",who_color="#1e1e17",who_outlines=[(absolute(1), "#a9ba12", absolute(0), absolute(0))])
+
+define xz = Character('小珠',who_font="Gunshihei.ttf",who_color="#ff00bf",who_outlines=[(absolute(1), "#ff0000", absolute(0), absolute(0))])
+define lpp = Character('老婆婆',who_font="Gunshihei.ttf",who_color="#ffffff",who_outlines=[(absolute(1), "#d8d8d8", absolute(0), absolute(0))])
+define all_people = Character('众人',who_font="Gunshihei.ttf",who_color="#ffffff",who_outlines=[(absolute(1), "#000", absolute(0), absolute(0))])
+define gzr = Character('工作人员',who_font="Gunshihei.ttf",who_color="#ffffff",who_outlines=[(absolute(1), "#d8d8d8", absolute(0), absolute(0))])
+define lbw = Character('卢伞本伟',who_font="Gunshihei.ttf",who_color="#000000",who_outlines=[(absolute(1), "#807d7d", absolute(0), absolute(0))])
+define smr = Character('???',who_font="Gunshihei.ttf",who_color="#ffffff",who_outlines=[(absolute(1), "#ffffff", absolute(0), absolute(0))])
+define rp = Character('记者',who_font="Gunshihei.ttf",who_color="#000000",who_outlines=[(absolute(1), "#917d7d", absolute(0), absolute(0))])
+define my1 = Character('美衣',who_font="Gunshihei.ttf",who_color="#b903b3",who_outlines=[(absolute(1), "#fff", absolute(0), absolute(0))])
+define personA = Character('路人A',who_font="Gunshihei.ttf",who_color="#ffffff",who_outlines=[(absolute(1), "#000", absolute(0), absolute(0))])
+define personB = Character('路人B',who_font="Gunshihei.ttf",who_color="#ffffff",who_outlines=[(absolute(1), "#000", absolute(0), absolute(0))])
+define all_people_except_rio = Character('众人(除了凛绪)',who_font="Gunshihei.ttf",who_color="#ffffff",who_outlines=[(absolute(1), "#000", absolute(0), absolute(0))])
+
+define disv=Dissolve(0.2) #快速溶解特效
+define disv2=Dissolve(0.05)
+define fadewh=Fade(0.5,0.3,0.2,color="#fff")
+define pixel_1=Pixellate(0.5,2)
+
+define gongyu=0
+define chezhan=0
+define wuhe=0
+define tiangong=0
+define shangye=0
+define bianli=0
+
+define a=0
+define b=0
+define c=0
+define d=0
+define e=0
+define f=0
+
+label splashscreen: #初始画面
+    show opening1 with dissolve
+    pause(2)
+    hide opening1 with dissolve
+    pause(1)
+    $ renpy.movie_cutscene('audio/opening1.ogv') #播放reborn logo
+    pause(1)
+    $ renpy.movie_cutscene('audio/opening2.ogv') #播放op
+    return
+
+label main_menu: #主菜单调用
+    play music "bgm/mainmenu.mp3"
+    call screen main_menu with dissolve
+
+label start:
+    # 显示一个背景。此处默认显示占位图，但您也可以在图片目录添加一个文件
+    # （命名为“bg room.png”或“bg room.jpg”）来显示。
+
+    scene bg room
+
+    # 显示角色立绘。此处使用了占位图，但您也可以在图片目录添加命名为
+    # “eileen happy.png”的文件来将其替换掉。
+
+    show eileen happy
+
+    # 此处显示各行对话。
+
+    e "您已创建一个新的 Ren'Py 游戏。"
+
+    return
+
+label tianxi_main: #永恒天希主进程
+    show white with dissolve
+    pause(0.3)
+    $ renpy.movie_cutscene('audio/transm.ogv') #播放转场画面
+    call tianxi_1
+    call screen choice_1(gongyu,chezhan,wuhe) with dissolve
+    play music "bgm/轻快地脚步.mp3"
+    call screen choice_2(tiangong=0,shangye=0,bianli=0) with fade
+    call tianxi_12
+    call screen choice_3(a=0,b=0,c=0,d=0,e=0) with dissolve
+    "(1.3结束...未完待续)"
+    return
+
+label tianxi_1: #第一流程
+    scene guangc with dissolve
+    play music "bgm/早晨的公园.mp3"
+    sd "那是一个特殊的春天，从那之后，我的命运开始走向了不平凡"
+    sd "我的名字叫作五河士道，在四月十日那天，我不幸遭遇了原因不明的自然灾害——空间震"
+    sd "但也因此，我与一位充斥着暴力美学的少女相遇了"
+    show tohkase at center
+    yt "士道！早上好！"
+    sd "夜刀神十香，是我遇到的第一位精灵，也是在那时我才正式知道了精灵的存在"
+    hide tohkase with dissolve
+    show tohkafg at center
+    stop music
+    play music "bgm/记忆的藤蔓.mp3"
+    sd """
+    所谓【空间震】是因精灵现世或情绪出现巨大波动后所产生的无意识行为
+
+    随着精灵出现带来的问题，人类组织出了代表不同意志的队伍
+
+    AST与DEM都是以夺走精灵的生命为解决方案，他们借助名为【显现装置】的武器与精灵战斗着
+
+    而我身处的拉塔托斯克则以完全相反的方式对待精灵，那就是与其约会，使其娇羞，最终由我亲吻她们封印她们的灵力
+
+    我与生俱来的能力就是能够通过亲吻的方式封印精灵的灵力，被封印后的精灵与常人无异。让她们回归正常生活，这既是拉塔托斯克的宗旨
+    """
+    hide tohkafg with dissolve
+    # $ renpy.add_layer("char1",above="master")
+    show kutori_1 at scene_1_show1()
+    pause 0.7
+    show yoshino_nse at scene_1_show2()
+    pause 0.7
+    show kaguya_1 at scene_1_show3()
+    pause 0.7
+    show yuzuru_se at scene_1_show4()
+    pause 0.7
+    show miku_se at scene_1_show5()
+    pause 0.7
+    show natsumi_1 at scene_1_show6()
+    pause 0.7
+    show origami_1 at scene_1_show7()
+    pause 0.7
+    sd "在他们的帮助下，我相继封印了四糸乃，五河琴里，八舞姐妹，诱宵美九，七罪，鸢一折纸七位精灵，并让她们尽力融入人类社会"
+    hide kutori_1
+    hide yoshino_nse
+    hide kaguya_1
+    hide yuzuru_se
+    hide miku_se
+    hide natsumi_1
+    hide origami_1
+    # hide all with dissolve
+    sd "但在这过程中，也发生了许多特殊的事件"
+    stop music
+#----------------------------------------------------------#
+    play music "bgm/A_Looming_Crisis.mp3"
+    scene white
+    show mayuri_1 
+    sd "万由里，是天使【雷霆圣堂】的管理人格，起初是为了观察我是否拥有【容器】的资格才来到世上。被称为为了消失而存在的生命"
+    sd "我怎么会承认这种事........但经历一系列事件封印她后，她还是........"
+    hide mayuri_1 with dissolve
+    scene mayuri_leave with dissolve
+    "她挥手和我告别的时候.....是我一生感觉最无力的时候。我不知道如何拯救她，只能眼睁睁的看着她消失在天空中"
+    scene huoshou_bg with dissolve
+    sd """
+    或守鞠亚与或守鞠奈，是我在拉塔托斯克特制的游戏【天宫市之恋】遇到的两个人工精灵。
+    
+    为了让鞠亚明白爱为何物，为了改变鞠奈的意志，我为之而努力
+
+    最终这次特殊的邂逅也迎来了终结，在游戏世界濒临毁灭时，鞠奈把鞠亚的数据送到了现实世界，她本身则消失在了游戏世界中
+    """
+    scene lian_1 with dissolve
+    sd """
+    莲，是被封印在神秘魔盒中的神秘精灵，她的天使【瘴毒净土】拥有实现任何愿望的神奇能力
+
+    她以此为诱惑，哄骗精灵实现愿望从而夺取她们的灵力
+    """
+    scene lian_2 with dissolve
+    sd "最后，在【瘴毒净土】创造出的理想乡中磨平了棱角，被我封印后消失在现实中"
+    scene classroom with dissolve
+    sd "在那之后，平静的日子来临。但好景不长，突然发生的特殊事件，将我再次拉进不平凡的命运之中"
+    scene muyuansu with dissolve
+    sd "DEM以绑架折纸的名义将我们所有人引到了一个地方并诱导我们攻击上空的黑洞，不料正中他下怀"
+    "(前方高音量预警)"
+    stop music
+#----------------------------------------------------------#
+    play music "bgm/Lament.mp3"
+    play sound "sound/爆炸大01.ogg" fadein 1
+    stop sound fadeout 7
+    scene heiying with fade
+    play sound "sound/ciruheian.ogg" fadein 1
+    sd "吸收了大家的攻击，黑色的身影撕裂天空降临在天宫市，顿时大地震动，乌云密布"
+    sd "他的力量极其可怕，众人最后耗尽所有力量才击退他，他身上的黑色能量逐渐崩裂，随着一声剧烈的爆炸，这些能量化作名为【灵魂碎片】的物质四下飞散"
+    scene muyuansu with fade
+    sd "于此同时，黑暗能量下的真面目也浮出水面"
+    stop sound fadeout 7
+    show tianxi_1 with dissolve
+    sd "物部天希，识别名为【灾祸】。是身世充满谜团的少年精灵，四处散落的【灵魂碎片】便是他的灵力结晶"
+    hide tianxi_1 with dissolve
+    scene yihua with fade
+    sd "被这种物质附身的人类心智会被它轻易影响，走向极端之路"
+    scene muyuansu with fade
+    sd "为了帮天希找回力量，同时也为了帮助那些被【灵魂碎片】影响的人们...."
+    sd "这段神奇的故事，仍在继续......."
+    stop music fadeout 1.0
+#----------------------------------------------------------#
+    window hide
+    scene black
+    $ renpy.movie_cutscene('audio/scene1.ogv')
+    pause 1
+    scene bedroom with dissolve
+    play music "bgm/平静的秋天.mp3"
+    window show
+    tx "............."
+    tx "已经是早上了吗？"
+    tx "（我的名字叫做物部天希，正如刚才所说，我是被他们称为精灵的存在）"
+    tx "（现在我身处的这个地方叫做精灵公寓，是一个众多房间的综合型公寓）"
+    tx "（要问我为何会出现在这里......）"
+    play sound "sound/敲木门1.ogg" fadein 1.0
+    tx "?"
+    stop sound fadeout 2
+    scene hongzhuanxw with dissolve
+    play sound "sound/橱柜门_打开.ogg" fadein 1.0
+    show shido with dissolve
+    tx "士道"
+    sd "早上好，天希"
+    tx "（让我能在这里生活的人，毫无疑问就是眼前的这个男人）"
+    tx "(在我刚来到这个世界时，我的....应该叫做灵力吧，化作【灵魂碎片】散落在这个城市中，目前的我是无法使用灵力的）"
+    tx "哦.....早上好"
+    tx "今天真早呢，士道"
+    tx "（为了让我熟悉这个城市，士道他经常会在这个时间带我参观城市的各个角落）"
+    sd "嗯.......天希，抱歉我从今天开始不能带你出去参观了"
+    tx "诶，是吗"
+    sd "学校的假期已经结束了，每天上学是时间都很早"
+    tx "学校？那是什么地方"
+    sd "嗯.......学校就是（此处省略一万字）"
+    tx "哦......哦，原来如此"
+    sd "就是这样了......为了防止你迷路我带来了地图，或者天希你想过要上学"
+    tx "不必了！"
+    tx "束缚自由的地方没有合理的理由去"
+    sd "倒也没那么严重啦.....（打开书包）"
+    play sound "sound/爆炸大01.ogg" fadein 1
+    stop music fadeout 1
+    play music "bgm/快乐的脚步（短循环）.mp3" fadein 1.0
+    show shido at scene_1_trans1() with disv2
+    sd "额............"
+    tx "？怎么了士道"
+    sd "这，这个是"
+    hide shido with dissolve
+    scene scene_1_show8
+    "士道从书包里拿出了一个白色的兔子手偶"
+    sd "遭，糟了..........."
+    tx "手偶？"
+    sd "难道是昨天晚上........"
+    scene keting with pixel_1 #----------------待定--------------#
+    "昨天..............士道正在客厅为地图坐着标记"
+    show yoshino_nse at center
+    play voice "sound/四糸奈hhh.ogg"
+    yn1 "呀哈哈！"
+    yn "士道先生，晚上好"
+    play voice "sound/四糸乃那个.ogg" fadein 1
+    show yoshino_nse at linear_move1()
+    show shido at scene_1_show9() with dissolve
+    sd "四糸乃和四糸奈吗，晚上好啊"
+    play voice "sound/四糸奈什么什么.ogg" fadein 1
+    yn1 "士道君，你在做什么啊？"
+    sd "这个吗，是准备给天希的天宫市地图，毕竟明天要上学了嘛....."
+    # hide yoshino_nse
+    show yoshino_nor at scene_1_show10() #四糸乃表情变换
+    yn "给天希哥哥的吗？"
+    yn1 "天宫市地图？里面难道会有新的游乐园什么的？"
+    sd "嘛，或许会有的，你们也想看看吗"
+    play voice "sound/四糸乃可以吗.ogg" fadein 1
+    yn "可....以吗？"
+    sd "该标记的已经标记好了，只要明天还给我就可以了"
+    yn "谢.....谢谢，士道先生"
+    play voice "sound/四糸乃好.ogg" fadein 1
+    yn1 "太好了呢四糸乃，这下能和七罪小姐去新的游乐场玩了"
+    yn "嗯"
+    play voice "sound/四糸乃好.ogg" fadein 1
+    hide shido with disv
+    hide yoshino_nse with disv
+    hide yoshino_nor with disv
+#----------------------------------------------------------#
+    scene keting_2 with fade
+    "几小时后......"
+    sd "好困......复习功课累死了"
+    play sound "sound/橱柜门_打开.ogg" fadein 1.0
+    sd "啊嘞？"
+    yn "................."
+    "阴暗光线中隐约能看到四糸乃趴在沙发上，已经睡着了"
+    show yoshino_sleep with dissolve
+    sd """
+    四糸乃也研究地图累到睡着了吗
+    
+    这也难怪，她们肯定很兴奋吧
+    
+    啊...........（揉揉眼睛）
+    """
+    "（取来了被子盖在四糸乃身上）"
+    sd "额对了，地图.........."
+    sd "光线太暗看不清啊.........只能碰碰运气了"
+    sd "嗯..........有了，是装地图的毛绒壳"
+    scene hongzhuanxw with fade
+    show shido with dissolve
+    tx "嗯......"
+    sd "糟糕了，得赶紧把四糸奈送回去啊"
+    sd "但是上学的时间........没办法了，天希，能帮我把四糸奈赶快送回四糸乃手上吗"
+    tx "诶？可以倒是可以......四糸乃，那个蓝发小女孩吗"
+    sd "太好了十分感激，记得赶快送到！我先走了"
+    tx "喂！"
+    hide shido with dissolve
+    "没办法.......食人俸禄要工作倒是合理的事情......"
+    "获得了四糸奈（手偶）"
+    show task1 at task_show with disv
+    "解锁了新任务"
+    tx "那么，是时候出发了"
+    stop music
+    play music "bgm/早晨的公园.mp3"
+    window hide 
+    # scene white #白色背景
+    # scene school_gate with fadewh
+    # "未完待续..."
+    return
+
+label tianxi_2: #第二流程(车站线)
+    # "车站线"
+    $ renpy.movie_cutscene('audio/transm.ogv')
+    stop music
+    play music "bgm/清晨阳光.mp3"
+    scene dalou_park with dissolve
+    window show
+    tx "糟糕真的迷路了，这是哪啊....."
+    dd "喂，前面那个！"
+    play sound "sound/空间相位.ogg" fadein 1.0
+    tx "？（瞬间消失）"
+    show diand at center
+    dd "（气喘吁吁跑来）唉......诶？刚才那个小子呢？"
+    play sound "sound/空间相位.ogg" fadein 1.0
+    tx "你是说我吗？（从后面碰了碰殿町的肩膀）"
+    dd "哇！你....不是在我前面吗"
+    tx ".....不要在意细节，怎么了吗？"
+    dd "嗯，刚才在路上看见你掉了东西"
+    tx "什么东西？"
+    show yoshina at scene_2_show1() with dissolve
+    tx "哇！啊这.十分感谢了"
+    dd "这个我看着和四糸乃酱的手偶很像"
+    dd "诶....难道你还喜欢收集手偶吗"
+    tx "哈？"
+    dd "嘿嘿嘿，开玩笑的，这应该是五河那小子给四糸乃酱的礼物吧，真是不坦率啊"
+    tx "（虽然说对了一半）总而言之，感谢你提醒我了"
+    dd "没什么了~这是一个城市英雄该做的事"
+    dd "那么~下一个被我帮助的人是谁呢（高兴的跑走）"
+    tx "（拿着四糸奈）虽然是个好人，但为何这么让人讨厌......"
+    $ chezhan=1
+    hide yoshina with disv2
+    hide diand with disv2
+    stop music
+    call screen choice_1(gongyu,chezhan,wuhe) with dissolve
+    # return
+
+label tianxi_3: #精灵公寓线
+    # "精灵公寓线"
+    $ renpy.movie_cutscene('audio/transm.ogv')
+    stop music
+    play music "bgm/坏孩子的甜梦.mp3"
+    scene home_cant with dissolve
+    window show
+    tx "四糸乃的话，好像也在公寓里吧，去找找？"
+    show tohkaaz at center
+    yt "诶？天希，怎么了吗？"
+    tx "十香吗？你也要出门啊"
+    play sound "sound/十香唔姆.ogg"
+    yt "唔姆，我要去学校，今天有些起晚了"
+    yt "话说天希今天没和士道出去参观吗？"
+    tx "不是说了他要上学嘛......"
+    yt "糟了，闲聊太久都不知道能不能赶上士道了！"
+    tx "说起来，士道好像还没有走远，现在出发应该还可以追上"
+    show tohkase with dissolve
+    play sound "sound/十香笑.ogg"
+    yt "是这样吗，学校！那我出发了，我出门了！"
+    hide tohkase with disv2
+    hide tohkaaz with disv2
+    tx "我也继续找四糸乃吧......"
+    "走进一看，天希在桌子上发现了两个便当盒"
+    tx ".........真是没办法"
+    "得到便当盒x2，任务已更新"
+    $ gongyu=1
+    call screen choice_1(gongyu,chezhan,wuhe) with dissolve
+
+label tianxi_4: #五河家线
+    $ renpy.movie_cutscene('audio/transm.ogv')
+    stop music
+    play music "bgm/春之圆舞曲（校园、舞会、日常）.mp3"
+    scene keting with dissolve
+    window show
+    tx "啊，找到了，就是这里了"
+    tx "现在时间还在，四糸乃会不会还在睡觉？"
+    # scene black
+    scene yoshi_sp with dissolve
+    tx "果然啊.....那我就不打扰她了（放下四糸奈）"
+    "四周环顾了一下，天希发现了之前士道说的地图"
+    tx "嗯.......怎么办"
+    menu:
+        "拿走地图":
+            call tianxi_5
+        "不拿走地图":
+            call tianxi_6
+    return
+    # $ wuhe=1
+    # call screen choice_1(gongyu,chezhan,wuhe) with dissolve
+
+label tianxi_5: #拿走地图分支
+    tx "为了防止迷路，还是带上吧...."
+    "(失去四糸奈，得到了天宫市地图)"
+    call tianxi_6_2
+    return
+
+label tianxi_6: #不拿走地图分支
+    tx "唉，还是算了。还是自由探索来的更合理"
+    tx "呵呵，希望你们两个在新游乐园玩的开心"
+    "(失去四糸奈)"
+    call tianxi_6_2
+    return
+
+label tianxi_6_2:
+    scene keting_3 with fade
+    tx "那么，终于可以...."
+    play sound "sound/电话_铃声_单声.ogg"
+    tx "............."
+    tx "切......搞什么啊，在这种不合理的时候打来"
+    tx "（接起电话）有什么事？"
+    play sound "sound/sound1.ogg"
+    show tele_1 at topleft with dissolve
+    ly "你好像显得很烦躁呢，发生什么事了？"
+    tx "emmm，没什么了"
+    tx "（现在这个和我通话的人叫做村雨令音，是弗拉克西纳斯上的分析官外加技术人员）"
+    tx "（不仅才华横溢，更是以我的灵力波动为参照升级了探索仪器，，如果有人被【灵魂碎片】附身的话她就会及时通知我）"
+    tx "（虽然她对我有恩，但不知为何，我的体内总有一种感觉告诉我她并不简单）"
+    tx "那么，分析官大人找我有什么事情，又发现【灵魂碎片】了吗？"
+    ly "........."
+    hide tele_1 with disv
+    show tele_2 at topleft with dissolve
+    ik "什么啊，还是有些自觉的嘛"
+    tx "琴里吗"
+    tx "（初中生司令官五河琴里，拥有白发带的妹妹模式和黑发带的司令官模式）"
+    tx "（总有一天我会问她如果换成彩色发带会怎样，不过现在可不是好时机）"
+    play sound "sound/琴里所以说.ogg"
+    ik "详细的事情等你到弗拉克西纳斯载详细说明吧"
+    ik "我已经把转送点设在了【天宫塔】"
+    ik "那么完毕"
+    play sound "sound/电话_挂断.ogg"
+    hide tele_1 with disv
+    tx "天宫塔是吧，又得好找了......"
+    "(主线已更新)"
+    show task3 at task_show with dissolve
+    return 
+
+label tianxi_7: #第三流程(商业街)
+    # "第七线商业街"
+    $ renpy.movie_cutscene('audio/transm.ogv')
+    stop music
+    scene yeshi1 with fade
+    window show
+    tx "这里是？"
+    play sound "sound/四糸奈hhh.ogg"
+    yn1 "呀哈喽！天希小哥"
+    show yoshino_nor at scene_1_show9() with dissolve
+    show natsumi_1 at scene_1_show10() with dissolve
+    tx "你们三个？为什么会在这里？"
+    nm "这句话不该我们说吗......合理怪"
+    yn1 "呀哈，不过在这里碰上真是巧呢"
+    tx "（没错，这个一直在讲话的兔子手偶就是我早上交还的四糸奈，这到底是什么原理，我至今都不清楚）"
+    tx "（而她旁边的女孩叫做七罪，至于她为何对我有特殊外号这个之后再说吧）"
+    yn1 "呐呐，天希小哥要不要一起去游乐场啊"
+    tx "不，我就不用了.........我还有点事情"
+    tx "(游乐园这种东西虽然我感兴趣，但是嘛总不能以私废公..）"
+    yn1 "是吗，那可太遗憾了"
+    "兔子手偶摆出失落的表情，但不一会她似乎是想起了什么似的，又恢复了滑稽的表情"
+    yn1 "啊对了，四糸奈一直都有个不明白的事情"
+    tx "？什么啊"
+    yn1 "为什么七罪小姐总是叫天希小哥——【合理怪】呢？"
+    show natsumi_2 at scene_1_show10() with dissolve
+    hide natsumi_1
+    play sound "sound/七罪所以说.ogg"
+    nm "............."
+    yn "我....也不知道......."
+    tx "嘛......关于这个嘛，背后有个心酸的故事"
+    hide natsumi_2
+    hide yoshino_nor
+    scene black with dissolve
+    stop music fadeout 1
+    play music "bgm/Truth.ogg" fadein 1
+    tx """
+    时间大概是我刚来到精灵公寓的时候
+    
+    那个时候........
+
+    经历第一场战斗的我目睹了【灵魂碎片】所带来的后患，那时的我决定放下戒心留在这里解决掉我留下的祸患
+    """
+    "咔嚓，五河家的大门被打开，在客厅里面坐着很多头发颜色各异的美少女"
+    "虽然我对女孩子没有多大兴趣，但如果之后要和她们作为邻居的话........."
+    play sound "sound/Se_00011.ogg"
+    scene keting with fade
+    tx "嘛...起码不能关系恶劣，嗯"
+    "不一会，士道带我走进了走廊"
+    show kutori_1 at center with dissolve
+    play sound "sound/琴里既然如此.ogg" fadein 1
+    ik "啊啦，欢迎回来士道，你把他带来了吗？"
+    "率先走到士道面前的是一个红发双马尾带着两个黑色发带的女孩子，他就是士道的妹妹——五河琴里"
+    "虽说我从来没怀疑过她们是不是亲兄妹，但上相确实没有相似的地方就是了...."
+    tx "虽然很不合理，但我还是来了，请允许我留在这里处理我所留下的错误"
+    tx "抱歉了，之后还要受你们照顾"
+    ik "嘛....也不用太放在心上来，事情的原委也并非都是你的责任"
+    show kutori_1 at linear_move1()
+    show shido at scene_1_show9() with dissolve
+    sd "不用想太多，把我们当作同伴就好了"
+    "士道不愧是个善人，能对一个“不确定因素”说出伙伴这种话"
+    ik "话是这么说，虽然让他住在精灵公寓可以方便不少"
+    ik "但是........."
+    stop music fadeout 1
+    play music "bgm/滑稽的女笨蛋.mp3" fadein 1
+    show kutori_ag at scene_1_show10() with dissolve
+    hide kutori_1
+    play sound "sound/搏击拳脚.ogg"
+    show kutori_ag at linear_move2()
+    ik "他可是男生啊！"
+    "琴里突然蹦出这句话，我顿时被无奈和无语的感觉包裹，脸上流出了虚汗"
+    tx "所以说，我对女孩子没多大兴趣了！"
+    tx "我又不是出自不合理的理由才住在这里的"
+    sd "嘛，说的也是琴里，现在才想起来也无济于事啊......"
+    ik "我倒是无所谓，不过其他精灵的想法就不敢保证了"
+    hide kutori_ag
+    hide shido
+#-----------------------------------------------------------#
+    "琴里悄悄回头瞄了精灵们一眼"
+    "只见紫发女孩和蓝发女孩一直在偷偷看着他们，白发女孩不为所动，另外沙发旁边的墙角还蜷缩着一个身影"
+    nm "（那个不叫蜷缩叫隐藏了....）"
+    tx "（别打岔）"
+    tx "不尝试就放弃的行为不可取，那么，上吧....."
+    show shido at linear_move3()
+    sd "天希.....希望你还是别小看这件事比较好"
+    stop music
+    play music "bgm/窘态丛生.mp3" fadein 1
+    play sound "sound/Se_00011.ogg"
+    tx "初次见面，我........."
+    yt "诶！"
+    play sound "sound/搏击拳脚.ogg"
+    hide shido
+    show shido at linear_move4() with disv2
+    show tohkaaz at scene_1_show10_1()
+    "刚刚踏进房门，紫发女孩就瞬间朝前扑了上来，虽然我知道目标不是我，但我还是礼貌的闪开了"
+    "最后，她一下扑到了士道身上"
+    play sound "sound/十香唔姆.ogg"
+    yt "唔姆，士道！怎么样，公寓又要有新成员了吗？"
+    "十香两眼冒光兴奋的不断着询问，但显然被压住的士道暂时说不出话来"
+    sd "十.........十香"
+    show tohkatk at scene_1_show10_1() with dissolve
+    pause 0.5
+    hide tohkaaz
+    yt "士道，你想说什么？"
+    tx "那个......这位小姐，不要压着士道的喉咙还要让他说话啊"
+    show tohkaaz at scene_1_show10_1() with dissolve
+    pause 0.5
+    hide tohkatk
+    yt "啊！抱歉士道"
+    "十香移开了身子，士道经过几次大喘气也恢复了状态"
+    yt "十香....下次换回以前的欢迎方式吧"
+    yt "唔姆，哦对了，士道说今天会有新成员加入，是谁呢？"
+    ik "就在你后面哦，十香"
+    yt "诶？"
+    "十香回头看了看我，我显得还是有些紧张..开始了一段生硬的自我介绍"
+    tx "初次见面，我是物部天希，请多指教"
+    yt "物部...天希？好像以前听过....嗯..."
+    yt "！"
+    play sound "sound/爆炸大01.ogg" fadein 1
+    hide tohkaaz
+    hide shido
+    window hide
+    scene heiying with fade
+    pause(1)
+    scene keting with fade
+    window show
+    show tohkaaz at center
+    yt "那个超级恐怖的......"
+    tx "啊恰.....糟了"
+    yt "士道，这是真的吗？"
+    sd "嘛.....出于很多原因了，不愿意吗？"
+    show tohkase at center with dissolve
+    pause 0.5
+    hide tohkaaz
+    play sound "sound/十香笑.ogg"
+    yt "不啊，只要是士道做的决定"
+    yt "士道现在这样做同样是想帮助别人吧"
+    sd "十香.....感谢你能理解"
+    show tohkatk at center with dissolve
+    pause 0.5
+    hide tohkase
+    play sound "sound/十香唔姆.ogg"
+    yt "那么新人！作为前辈的我就送你一些见面礼吧"
+    tx "见面礼？"
+    show tohkase at center with dissolve
+    pause 0.5
+    hide tohkatk
+    yt "唔姆！那可是会让你永生难忘的大餐哦！"
+    tx "大餐!"
+    show tohkase at linear_move4_1()
+    show natsumi_1 at scene_1_show10_2() with dissolve
+    nm "大餐........吗？"
+    tx "诶，你终于说句话了，大餐怎么了吗？"
+    nm "不....没什么"
+    yn1 "（感觉还是没到重点呢......)"
+    tx "（别急，听我继续说，之后........）"
+    hide tohkase
+    hide natsumi_1
+    stop music
+    scene kitchen_1 with fade
+    play music "bgm/轻松.mp3"
+    sd "呼......感谢款待，十香"
+    tx "额....我也吃饱了，原来大餐指的是全面包"
+    sd "哈哈，十香最喜欢黄豆粉面包"
+    tx "话说，为什么，明明相比之下还有更好的食物"
+    sd "关于这个嘛...我和十香第一次相遇时吃的就是黄豆粉面包，现在这个味道应该被她认为成幸福的味道了吧...."
+    tx "幸福？"
+    sd "是的，幸福的味道，或许是超过所有美食的"
+    scene tohka_eat with dissolve
+    yt "士道，这个好好吃哦~"
+    sd "是吗，那么就买这些吧"
+    yt "唔姆....虽然这个很好吃但感觉还是比不上黄豆粉面包"
+    yt "毕竟黄豆粉面包里都是与士道在一起的味道嘛"
+    sd "哈哈，那是什么味道啊"
+    scene kitchen_1 with fade
+    tx "原来如此........."
+    sd "不仅是十香，我与大家都有着很深的羁绊"
+    tx "是吗...那旁边这个孩子也是吗？"
+    "我指了指旁边的七罪"
+    show natsumi_2 at center with dissolve
+    play sound "sound/七罪.ogg"
+    nm "诶？找我有什么事"
+    tx "不，与其说是什么事，你说话真的太少了"
+    nm "............"
+    sd "七罪的性格有些内向，第一次见陌生人就会这样，还有......"
+    tx "不，这可不行吧！"
+    show natsumi_1 at center with dissolve
+    pause 0.5
+    hide natsumi_2
+    stop music
+    play music "bgm/快乐的脚步（短循环）.mp3" fadein 1
+    nm "？"
+    tx "听好了，你叫七罪是吧"
+    nm "...........嗯是"
+    tx "不会社交这可是大问题，长久下去可是很不合理的！"
+    tx "要像我一样，懂吗，在陌生的地方也要保持冷静"
+    show natsumi_3 at center with dissolve
+    pause 0.5
+    hide natsumi_1
+    nm ".......你"
+    nm "（内心想象：我不需要你说教!  再说你肯定不想和我这种丑八怪做朋友吧！）"
+    nm "实际上的：我........教......丑"
+    tx "什么啊？我听不见啊"
+    "七罪看了看士道，士道微微点了点头，婉如父亲一般肯定女儿"
+    nm "............."
+    nm "我.....（深吸一口气）"
+    nm "我不需要你和一个丑八怪说话，无视我就可以了!"
+    tx "丑八怪？哪有啊？"
+    show natsumi_2 at center with dissolve
+    pause 0.5
+    hide natsumi_3
+    play sound "sound/难看.ogg"
+    nm "你说什么！！我这种瘦削又小的外表已经是难看的代名词了吧！"
+    stop sound
+    nm "还是说，你觉得我连丑八怪都不如吗！"
+    sd "啊，七罪......."
+    tx "........先不管你的审美，你内心最难看的定义是什么？"
+    tx "如果你觉得你的样子还算难看的话，真的要给其他真的不漂亮的人一个合理的说法了"
+    tx "我还以为是什么问题，原来是价值观不合理啊.."
+    tx "有空多照照镜子，找回下自信心"
+    "我把一面镜子递给七罪，七罪还是不敢看自己的样子，反而有些生气"
+    nm "别...别想欺骗我！我知道的！你肯定想把我变成一个自恋的傻子，让我被别人耻笑"
+    nm "我已经知道你的居心了！"
+    tx "....那，就当我审美有问题好了，你很漂亮，你也这么觉得吧，士道"
+    sd "嗯，我也是"
+    play sound "sound/七罪.ogg"
+    nm "!。。。。。。。。。。。"
+    stop sound
+    show natsumi_2 at scene_1_trans1_1()
+    play sound "sound/七罪尖叫.ogg"
+    nm "啊啊啊啊啊啊啊啊啊！"
+    stop sound
+    tx "这.....(被七罪的利爪挠伤）"
+    nm "不知廉耻.....颠倒黑白...还有什么合理合理的烦死了！滚出去！啊不对，那我出去！"
+    play sound "sound/门关闭.ogg"
+    hide natsumi_2
+    tx "我......又说错什么了吗？"
+    sd "不，起码这次，你的语言没错"
+    tx "哦......哦"
+    scene yeshi1 with fadewh
+    show yoshino_nor at scene_1_show9 with dissolve
+    show natsumi_3 at scene_1_show10 with dissolve
+    nm "嘛.....在哪之后我叫他合理怪了，这样能稍微不紧张些....."
+    tx "很疼的....当初"
+    yn "原来...如此"
+    yn1 "真是个有趣的经历呢"
+    tx "嗯，话说我是不是忘了什么？"
+    yn "是什么...呢？"
+    scene black
+    show yeshi1 at huangdong()
+    show yoshino_nor1 at scene_1_show9
+    show natsumi_3 at scene_1_show10
+    tx "啊对了，天宫塔。我要去天宫塔的"
+    show natsumi_2 at scene_1_show10 with dissolve
+    pause 0.5
+    hide natsumi_3
+    nm "天宫塔？离这里可是很远的"
+    nm "你不会是一直在往反方向走吧...."
+    tx "不会吧.......那正确的路是？"
+    "三人一致指向了东边"
+    tx "明白了，谢谢你们三个了"
+    play sound "sound/跑走.ogg"
+    show natsumi_1 at scene_1_show10 with dissolve
+    pause 0.5
+    hide natsumi_2
+    play sound "sound/七罪真是的.ogg"
+    nm "这家伙的迷路症已经严重到这样了吗......"
+    yn1 "天知道呢....不过天希小哥一直都是这样"
+    hide natsumi_1
+    hide yoshino_nor1
+    tx "嗯....其实要说难忘的事情，还是在....."
+    stop music
+    play music "bgm/家族.mp3" fadein 1
+    scene bedroom_2 with fade
+    tx "抱歉了，今天还要陪我过夜"
+    sd "别总说见外的话嘛天希，我们已经是伙伴了"
+    tx "是吗........."
+    tx "（伙伴......吗）"
+    tx "哈哈......"
+    sd "笑什么？"
+    tx "不，只是突然觉得好奢侈...."
+    sd "奢侈？"
+    tx "呼....士道和她们在一起的时候，我能感受到你真的很开心"
+    tx "你拥有自己的过去，以及想要的未来"
+    tx "但是，这些东西对我来说是不是太奢侈了呢，因为我即不知我过去是谁，也不感兴趣未来我会成为什么样的人"
+    tx "哈哈，果然完成责任后我还是适合一个人啊....."
+    sd "............"
+    sd "或许.....是吧，不过，想要的未来吗...."
+    window hide
+    scene white with dissolve
+    $ renpy.movie_cutscene('audio/cg_1.ogv')
+    scene bedroom_2 with fadewh
+    window show
+    sd "（我一直都在考虑......）"
+    sd "（我的未来........）"
+    sd "一直和大家愉快的生活在一起确实很幸福啊"
+    tx "哈哈，是吧"
+    sd "但是.......这种事真的可能吗？你刚才也说到了未来吧......"
+    sd "如果说未来的选择会破坏这段关系....那么"
+    tx "你在说什么？"
+    sd "啊，没什么"
+    tx "啊.....脸上的伤还真疼啊"
+    sd "哈哈，我以前也被七罪抓过，现在想起来"
+    tx "伙伴这种东西，还真是麻烦呢"
+    sd "是的，伙伴真的很麻烦........"
+    sd "但是，你并不讨厌，对吧"
+    tx ".............."
+    tx "呵...嘛也讨厌不了...吧"
+    "过个十几分钟后，士道已经睡着，而我则出门准备散散步"
+    play sound "sound/Se_00011.ogg" fadein 1.0
+    scene red_brick_house with fade
+    tx "无论是过去还是未来都无所谓....."
+    tx "我拥有现在，所以，我一定会完成我的责任.......找回自己存在的意义....."
+    $ shangye=1
+    call screen choice_2(tiangong,shangye,bianli) with dissolve
+
+label tianxi_8: #第三流程(便利店)
+    # "第八线便利店"
+    $ renpy.movie_cutscene('audio/transm.ogv')
+    stop music
+    play music "bgm/music.mp3"
+    scene guangc with dissolve
+    play sound "sound/搏击拳脚.ogg" fadein 1
+    "啪，不知从哪弹出一个纸条打中了天希的后脑勺"
+    tx "啊，疼疼疼......什么玩意"
+    tx "纸条？"
+    "天希打开纸条，里面只有一行字:"
+    "请留意便利店公共电话"
+    tx "............"
+    scene outside_grocery day with fade
+    play sound "sound/电话_铃声_单声.ogg"
+    tx "摩西摩西？"
+    show tele_3 at topleft
+    sd "天希吗？啊终于联系上你了"
+    tx "怎么了？四糸奈的话已经送到了哦"
+    sd "太好了.....额不对我不是要说这个事的，我要说...."
+    play sound "sound/电话_挂断.ogg"
+    hide tele_3
+    tx "士道？士道？怎么挂了？"
+    lpp "小伙子，你使用时间够了吧，快躲开！"
+    tx "啊抱歉抱歉.........."
+    $ bianli=1
+    call screen choice_2(tiangong,shangye,bianli) with dissolve
+
+label tianxi_9: #第三流程(天宫塔)
+    # "第九线"
+    $ renpy.movie_cutscene('audio/transm.ogv')
+    stop music
+    play music "bgm/拉塔托斯克.mp3"
+    scene ratotskr with fade
+    show kutori_1 at center with dissolve
+    ik "由衷欢迎啊，欢迎来到【拉塔托斯克】"
+    tx "...喂又不是第一次见了"
+    tx "士道也在吗，到底发生什么了"
+    show kutori_1_1 at linear_move4_1()
+    hide kutori_1
+    show shido at scene_1_show10_2() with dissolve
+    sd "我也是被突然传送到这里的，琴里，果然又出现新的事件了吗"
+    ik "无路赛.....你觉得我是觉得好玩才传送你们的吗"
+    ik "咳咳，言归正传，这次我们观察到的【灵魂碎片】感染者已经确定了"
+    tx "是谁？"
+    ik "这个人士道应该认识的......"
+    sd "我？"
+    sd "不会是其中一个精灵吧"
+    ik "笨蛋士道！怎么可能，如果是这么严重的事就不是这种气氛来"
+    ik "嘛.......我也不卖关子了，他就是殿町宏人"
+    play sound "sound/爆炸大01.ogg"
+    all_people ".............."
+    sd "殿......殿町？真的假的..."
+    tx "谁啊？"
+    sd "额......这个，殿町啊"
+    sd "琴里，真的没有出错吗？"
+    ik "你在质疑令音的探测器，笨蛋士道"
+    sd "不但是，【灵魂碎片】附身在普通人身上也太奇怪了吧"
+    sd "不如说这比精灵被附身都让我惊讶."
+    tx "所以说谁啊....."
+    hide kutori_1
+    show kutori_1_1 at linear_move5()
+    hide shido
+    show shido_1 at linear_move6()
+    pause 1
+    show lingying at scene_1_show10() with dissolve
+    ly "殿町宏人，16岁，就读来禅高中，很喜欢二次元女友软件，完毕"
+    tx "分析官？"
+    ik "令音，你回来了"
+    ly "嗯，看见小士突然消失在学校我或许就知道出了什么事"
+    ly "小士，我们目前的对【灵魂碎片】的情报仍不多，无法确定他的所有特性"
+    sd "确实...其实就只有上次天希自己的例子而已"
+    tx "上次....我被直接吞噬了意志，那这个普通人话......."
+    ik "关于这个，目前我派了跟踪器观察他的状态"
+    ik "这也是最让我奇怪的地方....."
+    sd "？"
+    ik "以他现在的状态，可以是毫无异常，身边的人也没有发生异议"
+    sd "是吗......."
+    ly "令音将一份转学通知书交到来天希手上"
+    ly "关于你的转学申请已经弄好了，接下来你直接去学校就可以了"
+    tx "这是什么？（仔细阅读）"
+    tx "这这这这.....我没猜错的话"
+    stop music
+    play music "bgm/滑稽的女笨蛋.mp3"
+    show kutori_cf at chara_show1() with dissolve
+    pause 0.5
+    hide kutori_1_1
+    play sound "sound/琴里既然如此.ogg"
+    ik "已经很明显了，你明白接下来的任务了吧"
+    ik "用你的话来说，16岁的男孩子上学是一件很合理的事件哦~"
+    tx "这........"
+    ik "在这次任务期间，你要和士道一起监视殿町"
+    tx "不不不！我才不要，那地方一点都不合理！"
+    ik "现在反抗太晚来了~"
+    play sound "sound/Se_00090(EDEN_LOST).ogg"
+    #此段待定----------
+    # scene white with AlphaDissolve(xuanwo)
+    scene xuanwo with fadewh
+    
+    # show white with Alphadissolve(xuanWo)
+    scene ratotskr with dissolve
+    #此段待定----------
+    show kutori_1 at center
+    sd "那个....琴里"
+    ik "没关系的，准备工作都做好了，比起这个，我还是很担心【灵魂碎片】会不会对....."
+    sd "不，不是想说这个来着，你好像没有设置传送坐标啊"
+    show kutori_az at center with dissolve
+    pause 0.5
+    hide kutori_1
+    ik "诶？"
+    ik "嗯.....没事的，只会随机传送到一个地点而已，他应该也能找到吧......"
+    sd "那可是天希啊...."
+    play sound "sound/爆炸大01.ogg"
+    show kutori_az at linear_move2_1()
+    show kutori_zm with dissolve
+    pause 0.5
+    hide kutori_az
+    ik "拜托你了，士道....."
+    sd "好吧......."
+    play sound "sound/Se_00090(EDEN_LOST).ogg"
+    scene xuanwo with fadewh
+    pause 1
+    scene black with dissolve
+    "主视角切换为：士道"
+    stop sound
+    play music "bgm/Departure.mp3"
+    play sound "sound/Se_00057.ogg"
+    scene classbd with fade
+    sd "啊........果然传送到这里了"
+    sd "那么，该去哪找天希呢"
+    sd "那个家伙.....不知道又会迷路多久"
+    show tohka_sr at center with dissolve
+    yt "士道！"
+    sd "十香？"
+    yt "终于找到你了，士道"
+    "十香气喘吁吁的跑过来，能让十香累坏，想必都已经绕学校跑了好几圈吧....."
+    yt "士道突然消失，我和折纸满学校在找....士道，你到底去哪了？"
+    sd "我........"
+    to "士道"
+    hide tohka_sr
+    show tohka_sr at linear_move4_1()
+    show origami normal at right
+    # to "找到了吗，十香"
+    sd "诶，连折纸也赶到了"
+    to "士道，无缘无故的消失，身为你的女朋友需要向你讨个说法"
+    show tohka1 at chara_show2() with dissolve
+    pause 0.5
+    hide tohka_sr
+    sd "啊.......关于这个"
+    sd "（虽然告诉她们出现了新的【灵魂碎片】没关系。但如果告诉她们殿町的事.......）"
+    sd "好吧"
+    sd "十香，折纸，实不相瞒又出现新的【灵魂碎片】了"
+    show tohkaaz at chara_show2() with dissolve
+    pause 0.5
+    hide tohka1
+    yt "【灵魂碎片】？"
+    to "原来如此....士道原来是被传送走了吗"
+    yt "啊！我想起来了！【灵魂碎片】就是....."
+    sd "（嗯....毕竟距上次事件很久了，十香难道忘了吗.......）"
+    stop music fadeout 1
+    play music "bgm/快乐的脚步（短循环）.mp3" fadein 1
+    to "是一种能影响人心智的邪恶能量体，并且我们之前还与他战斗过两次"
+    yt "诶？是.....是这样的吗？"
+    play sound "sound/十香唔姆.ogg"
+    yt "唔姆....应该是过去很久了吧......"
+    sd "嘛，确实都过去两个月了"
+    to "所以士道，感染者是？"
+    sd "这个嘛....暂时不知道"
+    sd "【弗拉克西纳斯】的探测器也只是锁定范围，大概在学校里面"
+    to "原来如此，那么范围就在老师与学生了"
+    hide tohkaaz
+    show tohkaaz1 at linear_move2_2()
+    yt "你们两个！别把我排除在外啊！"
+    to "谁让你忘记了重要的事情，插不上话也是当然的"
+    show tohka_sr at chara_show2() with dissolve
+    hide tohkaaz1
+    yt "！唔.....确实，那就没办法了"
+    yt "那么士道，我们需要怎么做？"
+    sd "我需要先把天希找回来，你们暂时还是装作无事发生吧"
+    yt "为什么？不是让我们去找感染者吗"
+    to "明白了"
+    show tohkaaz at chara_show2()
+    pause 1.3
+    hide tohka_sr
+    yt "诶！为什么折纸你总是领悟的这么快啊"
+    to "......"
+    play sound "sound/跑走.ogg"
+    hide origami normal with dissolve
+    yt "喂！唔唔唔唔，给我站住！"
+    stop sound
+    hide tohkaaz with dissolve
+    sd ".....看来即使是折纸事件之后她们的关系也没得到太大的缓解啊"
+    sd "唉......."
+    tx "我也该去找天希了，等着我吧"
+#----------------------------------------------#
+    window hide
+    stop music
+    play music "bgm/music.mp3"
+    play sound "sound/Se_00257(dead).ogg" fadein 1.0
+    scene youle with fade
+    pause 1
+    # play sound "sound/Se_00090(EDEN_LOST).ogg"
+    scene xuanwo with fadewh
+    pause 1
+    scene youle with dissolve
+    play sound "sound/搏击拳脚.ogg"
+    pause 1
+    scene black
+    show youle at linear_move3_1()
+    show tianxi_1 at center with dissolve
+    window show
+    tx "啊.....疼疼疼疼....."
+    tx "什么鬼啊这是，把我送到哪了？"
+    tx "这里是？游乐园？喂......."
+    tx "这里是天宫市新开业的游乐场，不仅原来的游乐设施一样不少，还添加了特色产业，急速碰碰车"
+    play sound "sound/Se_00068.ogg"
+    tx "？这声音？好像是"
+    stop sound
+    play sound "sound/四糸奈hhh.ogg"
+    yn1 "呀哈哈哈，英雄号突击！"
+    tx "果然............"
+    play sound "sound/Se_00068.ogg"
+    "天希虽然想躲闪，但似乎已经来不及了........"
+    play sound "sound/搏击拳脚.ogg"
+    hide tianxi_1
+    show tianxi_11 at linear_move2_3()
+    tx "啊！"
+    "天希被突然窜出来并且速度极快的碰碰车撞到，被压在了下面"
+    tx "真的假的.....哪有碰碰车开这么快的"
+    show yoshino hat sad1 at scene_1_show9() with dissolve
+    play sound "sound/四糸奈呜诶.ogg"
+    yn "呜诶.....终于停下来了...."
+    yn1 "怎么感觉下面压到了东西，四糸乃你帮忙看看是不是压到是同样了"
+    yn "好.......好"
+    "四糸乃向下探出头来，被压住的天希向她招手"
+    tx "(｡･∀･)ﾉﾞ嗨，能否把车挪开呢~"
+    hide yoshino hat sad1
+    show yoshino hat sad1 at scene_1_trans1_2()
+    yn "啊！"
+    yn1 "天希小哥！你趴在四糸乃的车底下干什么？"
+    tx "我是在趴着吗......."
+    tx "不过这都不重要，能否........"
+    play sound "sound/Se_00068.ogg"
+    nm "四糸乃！"
+    "迎面看去，七罪也驾驶着碰碰车疾驰过来"
+    tx "这........别啊！（双手护头）"
+    nm "刹车！"
+    "在天希的另一半身体就要被压到时，七罪及时刹住了车，阻止了第二场惨剧的发生....."
+    show natsumi_4 at center with dissolve
+    play sound "sound/七罪真是的.ogg" fadein 1
+    nm "啊.......千钧一发啊"
+    tx "要感谢你没送我去天堂......."
+    nm "比起这个......你现在没事吧"
+    hide tianxi_11
+    show tianxi_11 at linear_move2_4()
+    tx "我现在像没事的样子嘛！快把我弄出来了！"
+    show natsumi_5 at center with dissolve
+    pause 0.5
+    hide natsumi_4
+    nm "我...我知道了"
+    yn "我我也来...帮忙"
+    play sound "sound/Se_00030.ogg"
+    scene black
+    show youle at linear_move3_1()
+    show natsumi_5 at center
+    show tianxi_11 at scene_1_show10_5()
+    show yoshino hat sad1 at scene_1_show9_2()
+    nm "合理怪...我和四糸乃的力气不够啊....."
+    "嘿咻.......嘿咻"
+    tx "切......"
+    hide natsumi_5
+    hide tianxi_11
+    hide yoshino hat sad1
+    gzr "找到了！那两个把车开出去的人！"
+    show natsumi_2 at chara_show3() with dissolve
+    nm "遭.....糟了，得动作快点...."
+    sd "需要帮忙吗......."
+    show natsumi_se at center with dissolve
+    pause 0.5
+    hide natsumi_2
+    nm "啊，谢........."
+    show natsumi_5 at center with dissolve
+    pause 0.5
+    hide natsumi_se
+    stop music
+    play music "bgm/滑稽的女笨蛋.mp3"
+    sd "那么，解释一下为什么要把车开到外面"
+    nm "士道..........."
+    hide natsumi_5
+    scene youle with fade
+    "经过一番波折，三人最后终于把压在天希身上的碰碰车挪走，士道也为工作人员道了歉"
+    show tianxi_11 at center with dissolve
+    tx "啊....得救了"
+    sd "你们啊......."
+    show natsumi_4 at scene_1_show10_6() with dissolve
+    nm "抱歉了....."
+    show yoshino hat sad1 at scene_1_show9() with dissolve
+    yn "对不起......"
+    sd "不....我也不是在责怪你们了"
+    ka "呵呵，士道哟，没想到你旷课的理由竟然是来这里"
+    hide natsumi_4
+    hide yoshino hat sad1 
+    show kaguya_1 at scene_1_show9() with dissolve
+    sd "耶俱矢？"
+    yu "忠言，随便旷课是不好的行为"
+    show yuzuru_ag at scene_1_show10_6() with dissolve
+    sd "你们两个，怎么也在这里"
+    ka "fufufufufufu，吾与士道等辈不同，吾拥有一切的正当之理"
+    show yuzuru_2 at scene_1_show10_6() with dissolve
+    pause 0.5
+    hide yuzuru_ag
+    yu "翻译，我们两位受了小珠老师的委托，前来新乐园找寻一个人"
+    tx "（....上次没和她们见过，观察一会吧）"
+    sd "原来如此，话说什么人会重要到特意出来找"
+    show kaguya_2 at scene_1_show9() with dissolve
+    pause 0.5
+    hide kaguya_1
+    ka "fufufufufu.....让吾模仿一下他的声线，只要听到这个声音，士道你肯定会回想起来的"
+    ka "咳咳！"
+    "(高音量警告)"
+    scene black
+    show youle at linear_move3_1()
+    show yuzuru_2 at scene_1_show10_6()
+    show kaguya_2 at scene_1_show9()
+    show tianxi_11 at center
+    play sound "sound/十七张牌你能秒我---.ogg"
+    stop sound
+    ka "（伪声）十七张牌，你能秒我？你能秒杀我？你今天能在17张牌把卢本伟秒了，我当场！"
+    sd "啊好了好了.....我懂了"
+    sd "过了这么久，他还是不来上课吗...."
+    yu "断言，他从一开始就未上过一次课"
+    ka "哼，敢阻止吾上信息课的人，虽远必诛！今日我们八舞就要替天行道"
+    tx "士道，士道..."
+    sd "？怎么了"
+    tx "啊....我一直都听不懂你们在说什么啊，还有刚才那个人伪音，那还能叫伪音吗........简直就是另一个人在说话"
+    ka "！  啊哈哈哈，天希你眼光不错哟，能欣赏到吾的技术"
+    sd "这件事和你明天要去的学校有关哦"
+    tx "哈?"
+    "士道捂住右眼，换成了中二的口气说话"
+    sd "信息技术课，是所有高中生梦寐以求的课程，在那里你会有属于自己的电脑，自由自在做任何事！"
+    sd "但是！"
+    tx "但是?"
+    ka "但是！由于老师经常旷课的原因，这节课总是被抢占！"
+    ka "变成了语文数学等无聊的课.....呜呜呜呜"
+    yu "更正，耶俱矢上次数学小测才打了20分，确实不需要上信息课"
+    show kaguya angry1 at scene_1_show9() with dissolve
+    hide kaguya_2
+    ka "夕弦！"
+    yu "不过现在，我们肩负着为大家找回信息课的光荣使命，前来这里抓捕信息老师——卢伞本伟"
+    tx "哇哦，名字好怪....."
+    tx "嘛.....听着到不错，我们也来帮忙吧，可以吧，士道"
+    sd "诶，啊这，信息课"
+    sd "（我也好久没在学校上过信息课了....）"
+    sd "好吧！我们加入！"
+    show kaguya_11 at scene_1_show9() with dissolve
+    hide kaguya angry
+    ka "呵呵，好吧，吾准许你们与我们同行"
+    yu "那么，出发吧！"
+    hide kaguya_11
+    hide yuzuru_2
+    hide tianxi_11
+    # show tianxi
+    show natsumi_1 at scene_1_show10_7() with dissolve
+    show yoshino_nor1 at scene_1_show9() with dissolve
+    nm "我们....该去哪..."
+    tx "你们还愣着干什么，一起出发啊！"
+    all_people "啊，是！"
+    scene youxit with fade
+    stop music
+    play music "bgm/坏孩子的甜梦.mp3"
+    ka "就是这里了！"
+    "众人来到新乐园的游戏棋牌区，在那里坐着一个金发中年男子正在全身贯注看着电脑屏幕，手中的鼠标不断移动着"
+    "突然，一阵熟悉而又神秘的音乐响起，男子的屏幕上出现了一个番茄"
+    stop music
+    play music "bgm/喵喵糖_-_欢乐斗地主_(纯音乐).mp3"
+    play sound "sound/哎呦，你还敢丢我番茄，你咋还敢丢我番茄呢.ogg"
+    lbw "诶哟你竟然敢丢我番茄，你咋还敢丢我番茄呢？"
+    stop sound
+    lbw "给这位小伙子泡好茶，因为我要开打了"
+    lbw "这是逼我的！"
+    play sound "sound/番茄连招.ogg"
+    "那就来一波卢本伟番茄连招！.........................................."
+    stop sound
+    tx "这是.....什么情况"
+    sd "如你所见，这个人是个棋牌迷"
+    sd "自从入坑后就一直泡在各种游戏厅.....虽然应聘了老师但从未去上过一节课"
+    show kaguya angry1 at left with dissolve
+    ka "哼哼，既然近在眼前就不要怪吾等人手下无情了！夕弦！"
+    show yuzuru_ag at right with dissolve
+    yu "明白！捆绑play发动！"
+    sd "？喂！耶俱矢，夕弦，你们不会是想直接把老师绑回去吧"
+    ka "不然呢，嘿嘿嘿.....和我们走吧老师"
+    "八舞姐妹一人拿一条长长的麻绳，在即将得手之际士道紧忙叫住她们"
+    sd "喂！不行的吧，先不提他毕竟也算老师，你们如果下手太重弄伤他怎么办"
+    ka "那怎么办啊士道！难道放任他不管吗？"
+    yu "士道，放任错误行为是更愚蠢的行为"
+    sd "这个......"
+    show yoshino_nor1 at center with dissolve
+    yn1 "四糸奈倒是觉得可以和他稍微谈判一下啦"
+    yn "我也...这么想"
+    show kaguya_11 at left with dissolve
+    pause 0.5
+    hide kaguya angry
+    ka "不...怎么说呢其实吾们之前也试过的....."
+    ka "但是这个人性格很怪，任何言语都说不通，只有......."
+    hide kaguya_11
+    hide yoshino_nor1
+    hide yuzuru_ag
+    scene shangye_day with fade
+    show kaguya_11 at left with dissolve
+    ka "诶？游戏？"
+    lbw "如果你们连这种简单的游戏都通不过的话......."
+    show kaguya_se at left with dissolve
+    pause 0.5
+    hide kaguya_11
+    ka "什么啊！不就是小游戏嘛，这次就让你们见识下我们八舞的实力！"
+    show yuzuru_se at right with dissolve
+    yu "了解。放马过来......"
+    hide yuzuru_se
+    hide kaguya_se
+    scene black with fade
+    ka "（结果....吾可能低估了难度）"
+    stop music
+    window hide
+    $ renpy.movie_cutscene('audio/F0DEE22B30566F0BAF8383B91B85E50B.ogv')
+    play music "bgm/喵喵糖_-_欢乐斗地主_(纯音乐).mp3"
+    scene shangye_day with fade
+    show kaguya angry1 at left with dissolve
+    show yuzuru_2 at right with dissolve
+    window show
+    ka "这不可能！可恶....竟然....12连败...."
+    lbw "小妹妹，你们太轻视这款游戏了"
+    lbw "想当年，我挑战的时候可比你们容易多了"
+    play sound "sound/lbw/玩游戏一定要有心态.ogg"
+    lbw "玩游戏一定要有心态啊"
+    stop sound
+    play sound "sound/lbw/我卢本伟没有开挂.ogg"
+    lbw "我卢伞本伟可没有开挂!"
+    stop sound
+    lbw "这次既然你们输了就请回吧"
+    ka "唔唔唔唔......好吧！八舞可是光明磊落之人！"
+    hide kaguya angry1
+    hide yuzuru_2
+    scene youxit with fadewh
+    show kaguya angry1 at left with dissolve
+    show yuzuru_2 at right with dissolve
+    ka "所以说，想说服他是很难的......."
+    yu "不解，我们试了好多次...也未曾过关"
+    sd "头疼了.....真是的"
+    ka "士道，如果没意见的话我就动手了"
+    sd "我.........."
+    "请务必在此处存档!!!"
+    menu:
+        "果然还是不太好吧":
+            call tianxi_10
+        "没办法了":
+            call tianxi_11
+    return
+
+label tianxi_10: #不太好线
+    "未完待续"
+    return
+
+label tianxi_11: #没办法了线
+    # play sound "sound/Se_00061(按键音).ogg"
+    show kaguya_zy at left with dissolve
+    pause 0.5
+    hide kaguya angry1
+    ka "fufufuffufu........那就交给我们了"
+    sd "下手轻点....希望"
+    ka "明白....和我们走吧！老师~"
+    hide kaguya_zy
+    hide yuzuru_2
+    "八舞姐妹悄悄的来到卢伞本伟身后，但他本人似乎还是浑然不知的状态"
+    scene youxiji with dissolve
+    play sound "sound/lbw/就玩游戏一定要笑，不要愁眉苦脸的，就要笑得玩，玩尼玛.ogg"
+    lbw "就玩游戏一定要笑~不要愁眉苦脸的......（优美的中国话）！"
+    stop sound
+    play sound "sound/lbw/阿姨快点.ogg"
+    lbw "阿姨快点！"
+    ka "诶哟，一手好牌啊~"
+    stop sound
+    play sound "sound/lbw/不要说话.ogg"
+    lbw "不要说话，网费什么的一会再说"
+    stop sound
+    play sound "sound/lbw/简单暴力.ogg"
+    lbw "诶，这一手可以，简单暴力！"
+    ka "要不要回去慢慢玩啊~"
+    stop sound
+    play sound "sound/lbw/哇对面有个人.ogg"
+    lbw "哇！对面有个人！"
+    ka "诶？哪里？"
+    stop sound
+    play sound "sound/lbw/跑走.ogg"
+    lbw "（逃走）"
+    yu "天真，呜呀！抓捕！"
+    stop sound
+    play sound "sound/Se_00003.ogg"
+    scene black with fade
+    show youxiji at huangdong
+    play sound "sound/搏击拳脚.ogg"
+    play sound "sound/lbw/哎呀！~~~~~.ogg"
+    lbw "哎呀~~~~~~~~!"
+    scene youxit with fade
+    show kaguya_se at left with dissolve
+    show yuzuru_2 at scene_1_show10_7() with dissolve
+    show natsumi_4 at center with dissolve
+    nm "你们下手也太......."
+    ka "稍微有点没收住手，但是完成吾的使命就够了"
+    yu "正解，接下来只要把犯人带回学校就行了"
+    play sound "sound/lbw/你喜欢搞事兄弟.ogg"
+    lbw "你喜欢搞事啊兄弟，下手这么重"
+    stop sound
+    ka "嘿嘿，你是逃不过吾的【漆黑之枪】的！"
+    yu "提醒，名字又改变了"
+    ka "怪怪就范吧！"
+    play sound "sound/lbw/放我一马_老铁.ogg"
+    lbw "放我一马吧，老铁"
+    stop sound
+    show kaguya angry1 at left with dissolve
+    pause 0.5
+    hide kaguya_se
+    ka "做不到！"
+    scene black
+    show youxit at linear_move3_1()
+    play sound "sound/搏击拳脚.ogg"
+    pause 0.5
+    play sound "sound/啊.ogg"
+    lbw "啊~"
+    yn1 "哦呀，这位大叔还真是惨呢....."
+    sd "我也这么觉得......."
+    "中年男子被八舞姐妹五花大绑抬了起来，虽然同情他......嘛算了"
+    show kaguya_se at left with dissolve
+    # pause 0.5
+    # hide kaguya angry1
+    ka "好！走吧！"
+    tx "..............."
+    hide kaguya_se
+    stop music
+    play music "bgm/bgm05_01.mp3"
+    scene youle with fade
+    sd "好的，这下任务完成了"
+    sd "大家还想在游乐场玩一会吗？"
+    show yoshino_nor1 at left with dissolve
+    play sound "sound/四糸乃可以吗.ogg"
+    yn "可以吗？"
+    stop sound
+    play sound "sound/四糸奈hhh.ogg"
+    yn1 "这样的话，四糸奈还想去做摩天轮啊！"
+    yn1 "原本的计划也是有摩天轮的哦"
+    play sound "sound/四糸乃嗯.ogg"
+    yn "嗯....."
+    show natsumi_1 at scene_1_show10_2() with dissolve
+    nm "我也想....去"
+    nm "坐【赝造魔女】之外的东西飞起来我也想试试呢....不是因为四糸乃去哦~"
+    tx "你刚才是不是把真实用意说了出来...."
+    show natsumi_4_1 at scene_1_show10() with dissolve
+    pause 0.5
+    hide natsumi_1
+    play sound "sound/七罪.ogg"
+    nm "不...不是"
+    tx "嘛算了，你们快去吧。早点回来哦"
+    sd "嗯，玩的开心点哦"
+    yn "谢谢....!  士道先生"
+    nm "那我们就........"
+    play sound "sound/爆炸大01.ogg"
+    scene black
+    show youle at linear_move3_1()
+    show natsumi_4_1 at scene_1_show10()
+    show yoshino_nor1 at left
+    stop music
+    play music "bgm/game/bgm26_01.mp3"
+    all_people "！！！"
+    show natsumi_2 at scene_1_show10_2() with dissolve
+    pause 0.5
+    hide natsumi_4_1
+    nm "怎么了！怎么回事"
+    ka "哇！夕弦你们快看！摩天轮！"
+    hide natsumi_2
+    hide yoshino_nor1
+    play sound "sound/Se_00072.ogg"
+    "顺着耶俱矢指的方向望去，不知为何刚才还好好的摩天轮突然开始坍塌"
+    tx "那个设施，好像快要......."
+    yu "出击！耶俱矢！"
+    ka "嘿嘿，明白！八舞出动！"
+    play sound "sound/Se_00144.ogg"
+    play sound "sound/Se_00309.ogg"
+    show kaguya_zd at left with dissolve
+    show yuzuru_zd at right with dissolve
+    yu "誓言！有我们在不会让任何人受伤！"
+    "还没等我们反应过来，耶俱矢和夕弦就已经召唤出限定灵装与天使前往救人"
+    "【飓风骑士】！贯穿者/束缚者！"
+    hide kaguya_zd
+    hide yuzuru_zd
+    tx "这就是....她们的天使吗"
+    sd "是啊，【飓风骑士】      不愧是被誉为速度之王的八舞呢"
+    yn "我....也要去帮忙！"
+    yn1 "呦呦！四糸乃好勇敢！四糸奈可不能寒了四糸乃的心，交给我吧！"
+    nm "诶？都去吗.....四糸乃也？"
+    nm "这样的话.....我也"
+    "【冰结傀儡】【赝造魔女】"
+    play sound "sound/Se_00309.ogg"
+    scene youle with fade
+
+    #偷个小懒，小四和七罪灵装出场未做
+
+    play sound "sound/Se_00257(dead).ogg"
+    "一阵白光闪过，四糸乃与七罪也召唤出各自的天使前往"
+    stop sound
+    tx "..........."
+    sd "怎么了天希？你不去吗"
+    tx "我......"
+    tx "这并不在责任范围内啊，我没理由去救....."
+    sd "......是吗"
+    "另一边，耶俱矢和夕弦正在以迅雷般的速度不断接住下落的舱室"
+    scene youle_day with fade
+    show kaguya_zd at left with dissolve
+    play sound "sound/Se_00257(dead).ogg"
+    ka "fufufufufu....太慢了！太慢了！我这个飓风之子还能接住更多！"
+    ka "简直毫无难度"
+    show yuzuru_zd at right with dissolve
+    yu "忠言，耶俱矢要注意轻拿轻放，不要伤害到里面的人"
+    ka "吾....吾得知了，啊！又有掉落，飓风之子来了！"
+    hide yuzuru_zd
+    hide kaguya_zd
+    show diand_1 at center with dissolve
+    smr "哦~有点意思.....还轮不到我出手吗..."
+    smr "那么...就再给你们加点猛料吧！"
+    hide diand_1
+    play sound "sound/Se_00310.ogg"
+    scene black
+    show youle_day at linear_move3_1()
+    "轰！"
+    pause 1
+    play sound "sound/大火_带有明显建筑物碎裂声.ogg"
+    "不知道何处又突然燃起熊熊烈火，台下刚被救出的民众再次被困入火圈内"
+    "支撑摩天轮的铁架也因高温渐渐融化，摇摇欲坠......."
+    show kaguya_zd at left with dissolve
+    ka "该死！怎么回事啊，一波未平一波又起！"
+    show yuzuru_zd at right with dissolve
+    yu "安定，别急着抱怨，耶俱矢，专心救人吧"
+    ka "怎么办？吾去救下面的人？"
+    yu "否定，我们还有伙伴不是吗？"
+    yu "相信她们吧"
+    ka "哦，呵呵呵...是这么一回事啊，吾明白了！那下面就交给吾的伙伴们吧！"
+    hide yuzuru_zd
+    hide kaguya_zd
+    show yoshino_zd at center with dissolve
+    yn "【冰结傀儡】！"
+    play sound "sound/走在暴风雪里.ogg"
+    "四糸乃驾驶着【冰洁傀儡】喷出寒风熄灭了一部分火焰"
+    hide yoshino_zd
+    show natsumi_zd at center with dissolve
+    nm "要上了...."
+    nm "开始工作了！【赝造魔女】"
+    nm "【千变万化镜】——【冰结傀儡】"
+    play sound "sound/Se_00309.ogg"
+    "七罪利用【赝造魔女】的能力帮助四糸乃，其他人借此机会继续救人，局势渐渐被控制住"
+    hide natsumi_zd
+    scene youle with fade
+    sd "大家....谢谢你们"
+    tx "......"
+    show diand_1 at center with dissolve
+    "感叹之余，我突然在一边发现了一个熟悉的人影...."
+    sd "诶,你是？"
+    hide diand_1 with dissolve
+    "对方并没有给我太多反应时间，因此我没有想起来他究竟是谁......"
+    sd "是谁来着....."
+    scene youle_day with fade
+    "视角再次回到现场，局势已经完全控制，火焰也基本全部扑灭，摩天轮也被稳定住"
+    stop music
+    play music "bgm/bgm35_01.mp3"
+    show kaguya_zd at left with dissolve
+    play sound "sound/Se_00257(dead).ogg"
+    hide kaguya_zd with dissolve
+    show kaguya_11 at left with dissolve
+    ka "呼.....终于结束了"
+    ka "但是还是小菜一碟呢，我这个飓风之子可没有人让一个人受伤哦"
+    show yuzuru_se at right
+    yu "肯定，没有人受伤最好...."
+    hide kaguya_11
+    hide yuzuru_se
+    pause 0.5
+    show yoshino_nor1 at left with dissolve
+    yn "基本全部的火.....都被我和七罪酱扑灭了"
+    yn1 "是呢！四糸乃和七罪酱可是很厉害的"
+    show natsumi_se at scene_1_show10_9()
+    nm "我没做什么了，基本都是四糸乃她们的功劳而已"
+    sd "大家，辛苦了！"
+    sd "还有谢谢你们，愿意拯救市民们"
+    hide yoshino_nor1
+    hide natsumi_se
+    pause 0.5
+    show kaguya_11 at left with dissolve
+    show yuzuru_se at right
+    "看起来大家都累坏了呢，这次必须在琴里面前好好夸奖她们才行"
+    ka "fufufufu....小菜一碟，吾与吾的暗黑之枪应对这种情势完全是游刃有余"
+    yu "更正....算了耶俱矢确实很努力了"
+    ka "怎么感觉有种老妈的感觉...."
+    hide kaguya_11
+    hide yuzuru_se
+    pause 0.5
+    show yoshino_nor1 at left with dissolve
+    show natsumi_se at scene_1_show10_9() with dissolve
+    yn1 "士道君！士道君！四糸乃这么努力，是不是该给四糸乃一些奖励啊，亲亲之类的四糸奈也可以允许哦"
+    yn "四糸奈！"
+    yn1 "啊唔唔唔...让我说完好吗四糸乃..."
+    sd "哈哈，我知道的，之后会给你们丰厚的奖励的"
+    all_people "太好了！"
+#-----------------------------#
+    scene black
+    show youle at linear_move3_1()
+    rp "快看快看！我们的英雄好像就在前面！"
+    "突然一群记者朝我们这边走来，这可糟了...唯独精灵的身份这件事是不能曝光的...."
+    sd "大家！快躲起来！"
+    ka "诶.....我还想知道平民们是怎么称赞本宫的....啊夕弦别拽我啊！"
+    play sound "sound/空间相位.ogg"
+    "借助夕弦和耶俱矢的天使，我们瞬间消失在众人的视线中"
+    "一番乔装之后，才重新出现在人群后方"
+    show kaguya_3 at left with dissolve
+    ka "啊......为什么要逃啊..我还想...(失落.jpg）"
+    ka "我还想听听民众的称赞来着...."
+    show yuzuru_3 at right with dissolve
+    yu "安静，耶俱矢别再抱怨了"
+    sd "没事的耶俱矢...真正的英雄人物都是默默付出的..."
+    ka "唔唔唔......好吧"
+    ka "也是，士道说的对"
+    stop music
+    play music "bgm/bgm15_01.mp3"
+    hide kaguya_3
+    hide yuzuru_3
+    smr "哦~那种说法，我不太喜欢啊...."
+    smr "英雄这种东西，如果没有别人的衬托，还会有存在的意义吗？"
+    tx "？"
+    sd "是谁？"
+    play sound "sound/Se_00119(bad_end).ogg"
+    scene black
+    show youle at linear_move3_1()
+    show tianxi_11 at center
+    tx "！这种感觉....是？"
+    scene heiying at linear_move3_1() with fade
+    tx "啊！"
+    scene youle with fade
+    # show tianxi_11 at center with dissolve
+    "不知为何，天希突然一副痛苦的样子，到底发生什么了...."
+    show natsumi_2_1 at chara_show3() with dissolve
+    nm "你怎么了合理怪！"
+    tx "......虚伪...."
+    tx "不....没什么"
+    sd "没事吧，快回弗拉克西纳斯上检查一下吧"
+    tx "没事的....不要在意"
+    nm "真是的，大惊小怪"
+    hide natsumi_2_1 with dissolve
+    rp "大家快看！我现在已经到达事发现场，这个坏掉的摩天轮就是我们的英雄大显身手的地方！"
+    rp "大家跟上我!"
+    scene black
+    show youle at linear_move3_1()
+    all_people "哦！"
+    play sound "sound/Se_00310.ogg"
+    rp "那么大家....诶？这是什么声音？"
+    play sound "sound/大火_带有明显建筑物碎裂声.ogg"
+    "熟悉的火焰突然又再次燃烧了起来，被固定的铁架再次松动，整个摩天轮开始陷落"
+    rp ".....观众朋友们！危险出现了！那看来....!"
+    sd "糟了！赶不上了!"
+    "正当我们都以为为时已晚的时候，一个意外的身影挺身而出顶住了铁架"
+    scene black
+    show youle at linear_move3_1()
+    show diand at center with dissolve
+    all_people "ohhhhhhhhhh!"
+    dd "看我的！消失吧！吞噬之炎！"
+    play sound "sound/Se_00119(bad_end).ogg"
+    show diand_1 at chara_show3_1() with dissolve
+    pause 0.5
+    hide diand
+    pause 1
+    show diand at center with dissolve
+    # pause 0.5
+    hide diand_1
+    play sound "sound/Se_00094.ogg"
+    "黑色的火焰如同炮弹一般从殿町的双手中飞出，火焰瞬间蔓延直至将铁架燃烧殆尽，只留下了些许灰尘"
+    hide diand
+    rp "观众朋友们，你们看到了吗？英雄出现了！"
+    rp "我就是被英雄大人拯救的一员啊，让我们上前感谢吧！"
+    dd "大家！都没受伤吧！城市英雄——殿町宏人不小心来晚了"
+    scene black
+    show youle at linear_move3_1()
+    play sound "sound/人群_Woo_惊讶_赞叹.ogg"
+    all_people "ohhhhhhhhhhhhh！英雄！英雄！英雄！"
+    tx "................."
+    sd "殿....町？"
+    "（主视角切换：天希）"
+    window hide
+    play sound "sound/Se_00061(按键音).ogg"
+    return
+
+label tianxi_12: #第四流程(学校)
+    stop music
+    $ renpy.movie_cutscene('audio/transm.ogv')
+    play music "bgm/bgm09_01.mp3"
+    play sound "sound/0056.ogg"
+    scene bedroom_3 with fade
+    "平静的夜晚如流水般飞速流逝....，第二天的太阳升起后，我面露无聊表情站在镜子旁..."
+    "正常的高中制服，合理重量的书包，作为出门必带的耳机也没有落下"
+    "本来是没有任何·问题的着装，但这身衣服的主人，却一步都不想走出门..."
+    tx ".....学校吗，真的是一点都不感兴趣啊"
+    tx "经过上次的事情，监视任务变得更加重要了吗...."
+    tx "经过几分钟的心里博弈后，我推开了房门"
+    play sound "sound/Se_00011.ogg"
+    tx "嗯？总感觉不对劲......"
+    scene black
+    show bedroom_3 at linear_move3_1()
+    play sound "sound/礼炮1.ogg"
+    stop music
+    play music "bgm/bgm18_01.mp3"
+    "刚刚踏出一步，礼炮的声音就在我耳边响起，伴随着彩带的下落，我大概能猜出来凶手的身份了"
+    scene siqi_back with dissolve
+    "欢送合理怪/天希小哥！"
+    tx "这是？值得高兴的事吗....."
+    tx "你们几个庆祝什么？"
+    yn1 "咿呀呀，从今天开始天希小哥也要开始上学了呢"
+    tx "只是任务而已了，你们在见到那个人之后应该也心知肚明了吧"
+    tx "就算我这么说，你们也不会听吧....."
+    tx "学校什么的....到底会发生什么啊"
+    nm "也没什么大不了的了....只不过是会被人在鞋柜里放钉子，上课时在座位底下放胶水，下课进行各种恶作剧.....之类的"
+    tx "..........."
+    tx "你这....感觉就像经验之谈啊"
+    yn "你们以前也上过学吗？"
+    yn "嗯......之前在琴里酱的帮助下，我和七罪酱在琴里的学校上过一天学"
+    tx "所以呢.....有总结出什么教训吗"
+    nm "教训就是.....就算在学校....也不能有人欺负四糸乃"
+    "七罪一脸坚定的说出这句话，话说回来，我记得这两个孩子都比较怕生啊，为什么会和我进行这么正常的对话啊？"
+    tx "真是不合理......"
+    scene bedroom_3 with dissolve
+    show natsumi_1 at scene_1_show10_2() with dissolve
+    #四糸乃出场(待做)
+    nm "不合理x47，很好......"
+    tx "你好像在记什么不得了的东西.....嘛算了不说这个了"
+    tx "士道他在哪里？今天他说会带我去学校的"
+    yn1 "士道君的话，应该在自己家楼下了吧，毕竟每天有可爱的妹妹用【甜蜜膝击】的方式叫醒呢，绝对不会赖床的"
+    show natsumi_4 at scene_1_show10_10() with dissolve
+    pause 0.5
+    hide natsumi_1
+    nm "能让士道自愿等你，这也算是一项特权哦，合理怪"
+    tx "诶、是吗？"
+    yn1 "诶.....自愿等吗？哦！四糸奈突然想到一些有趣的点子！"
+    yn1 "七罪酱，附耳上来"
+    nm "诶？要干什么？"
+    #七罪移动(待做)
+    yn1 "***************"
+    #四糸乃上下震动(待做)
+    play sound "sound/0035.ogg"
+    show natsumi_2_1 at scene_1_show10_11() with dissolve
+    pause 0.1
+    hide natsumi_4
+    nm "啊.....你什么时候知道，而且那种的，想想就....."
+    tx "？？？"
+    tx "你们在说什么？"
+    nm "不....没什么...."
+    yn "你和七罪酱说了什么、四糸奈？"
+    yn1 "那个呢，换成平常的话.....士道君每遇到一个新的精灵，都会与其约会，使其娇羞....."
+    tx "..............................................................哈？"
+    yn1 "最后通过kiss的方式封印对方的灵力，但是天希小哥不一样。"
+    tx "哦，说起来确实是啊，琴里说我因为灵力都化作了【灵魂碎片】所以现在的状态应该是和你们差不多的"
+    nm "那个.....别说下去了吧"
+    yn1 "所以我们就在想，要不给天希小哥补一次和士道君的约会呢！"
+    all_people "？？？？？"
+    show natsumi_4 at scene_1_show10_10() with dissolve
+    pause 0.5
+    hide natsumi_1
+    yn "士道先生和....天希哥哥，约会？"
+    nm "总感觉越说越奇怪......."
+    tx "约会？嗯........"
+    tx "可以啊（天希并不明白约会是什么意思）"
+    scene black
+    show bedroom_3 at linear_move3_1()
+    play sound "sound/0045.ogg"
+    show natsumi_2_1 at scene_1_show10_11() with dissolve
+    pause 0.1
+    hide natsumi_4
+    nm "真的假的！啊！好痛！"
+    yn "七罪酱！"
+    yn1 "哦呀，七罪酱好像手被碰伤了.............."
+    "我的房间有很多排位紧凑的家具，七罪会碰到很正常"
+    tx "没事吧"
+    nm "没事......没事的这种程度......."
+    tx "真的没事吧，我看手指可都流血了，从医学角度来说，这种伤口不处理的话......"
+    tx "就会让病毒入侵血液，最后要将这个手都切下去才能保全性命！"
+    yn "啊！真的这么严重吗？稍等一下.....我马上就去拿药"
+    nm "没事的四糸乃，合理怪明显在开玩笑啊......"
+    nm "说起来，有开玩笑的时间你有注意现在已经几点了吗"
+    tx "诶？"
+    "我看了看手表的指针.....离迟到....还有15分钟？"
+    tx "糟了........抱歉，药在我的桌子上，你们自己处理伤口吧"
+    hide natsumi_2_1 with dissolve
+    stop music
+    play music "bgm/bgm07_01.mp3"
+    scene wuhejia_1 with fade
+    play sound "sound/0022.ogg"
+    tx "骗人的吧......还有十分钟....士道还会在等我吗？"
+    show kutori_3 at center with dissolve
+    ik "真的在等你的话，士道恐怕也离迟到不远了吧"
+    tx "c"
+    ik "当然是要说重要的事啊，重要！"
+    tx "好好........我知道了"
+    ik "新乐园的事我听说了，你们没事吧"
+    ik "没想到殿町宏人他这么轻易的就展现了能力......"
+    tx "没兴趣....只要最后能把碎片回收就没事了.."
+    ik "话是这么说......但是天希你现在可是连灵力都控制不好啊"
+    tx "切.....谁说的"
+    ik "那为什么在精灵们都去救人的时候，你却在袖手旁观？"
+    tx "................"
+    tx "那不在我的责任范围内.....我说了吧，我的责任只有回收碎片而已....."
+    tx "其他的,,,,,"
+    ik "其他的就可以视而不顾了.....对吧"
+    ik "真是小孩子......."
+    ik "我先走了，既然这样正事就给我认真点吧！"
+    tx "........................."
+    hide kotori_3
+    play sound "sound/0046.ogg"
+    scene BG0601 with fade
+    "伴随着学校钟声的指引，我准时来到了地狱的门口"
+    "士道在门口外站着....是在等我吗"
+    play sound "sound/0022.ogg"
+    show shido_1 at center with dissolve
+    sd "天希！在这里！"
+    tx "（果然在等我吗....）"
+    tx "抱歉啊.....耽搁这么久还要等我..."
+    sd "没事的啊，离上课还有时间"
+    sd "那么，欢迎来到来禅高中，天希！"
+    "跟在士道的后面，每往前一步就感觉像是在地狱迈进，所谓的压迫感原来是这个意思吗....."
+    "我流着冷汗打了个激灵，突然一个熟悉的身影在背后拍了拍他"
+    play sound "sound/0014.ogg"
+    hide shido_1
+    show shido_1 at linear_move4_2()
+    show diand at right
+    dd "早上好啊！我的死党，今天的我怎么样？"
+    tx "？"
+    dd "哦呀？认错人了吗？真是抱歉啊"
+    tx "不，没事......"
+    tx "说起来，我们是在哪里见过吗？总感觉你好眼熟？"
+    sd "殿町，早上好啊"
+    dd "哦呀哦呀，这次是真的死党啊！早上好五河！觉得今天的我是不是和以前有些不一样？"
+    sd "不一样指的是？"
+    tx "指在游乐园那件事吗？"
+    dd "是啊！这位小哥记性很好嘛，我好像记起你了！你和五河他们好像也在现场吧"
+    sd "额......嘛确实，明明新乐园都是刚刚建起的娱乐设施，上次的事件真是不敢想象啊"
+    dd "呵呵，没什么事的。有我这个城市英雄在任何意外发生的机率....都是0"
+    sd "是这样吗....说起来你身体没事吧，毕竟突然多了那么强大的......"
+    dd "这可一点都不像死党会说的话哦~五河，我会有什么事？"
+    dd "只是和你一样，在某天自己的能力激发了出来"
+    dd "是吧，一夜之间变成现充的男人....五河士道"
+    sd ".........."
+    dd "哈哈，开玩笑了，话说回来这位，我还没有问你尊姓大名呢"
+    tx "物部天希"
+    dd "物部是吗，请多指教！希望这学期能被分进一班哦~"
+    dd "当然~我的死党也是不能缺的，那么大家，祝你们开学愉快~"
+    play sound "sound/0022.ogg"
+    hide diand
+    "殿町头也不回的走进了学校，而士道的脸色从刚才开始就有些问题...."
+    "不过计较这么多也无济于事....随后我们也进入了学校"
+    hide shido_1
+    stop music
+    play music "bgm/bgm35_01.mp3"
+    scene classw with fade
+    show shido_2 at right with dissolve
+    show tohka1 at left with dissolve
+    "进入了教学楼的走廊，十香向我们招手"
+    yt "早上好！士道，天希"
+    show tohkase at left
+    pause 1.1
+    hide tohka1
+    play sound "sound/十香笑.ogg"
+    yt "士道！我今天可是第一个到学校的哦！"
+    stop sound
+    play sound "sound/Se_00030.ogg"
+    "十香将头靠向士道，脸上的表情似乎写满了快给我奖励似的，士道一脸没办法的宠溺表情，把手放到了十香的头上"
+    stop sound
+    play sound "sound/Se_00030.ogg"
+    sd "我摸我摸~"
+    play sound "sound/十香唔姆.ogg"
+    show tohka1 at left with dissolve
+    pause 1.1
+    hide tohkase
+    yt "唔姆，当然我这样并不是为了要奖励哦！今天是天希第一天上学，身为前辈的夜刀神十香！一定会让你对这里的生活流连忘返的！"
+    yt "就像黄豆粉面包一样！"
+    tx "诶！和上次一样？"
+    yt "唔姆！"
+    tx "不.....那还是大可不必..."
+    tx "（毕竟上次都吃到再也不想看见面包了....)"
+    sd "哈哈，十香已经把自己当作资深前辈了啊"
+    sd "但是也是，十香在精灵中确实算是大前辈了"
+    sd "如果不算琴里的话，或许与十香的相遇就是我第一次见到精灵呢"
+    tx "这种事还要分先后吗？那我之前士道封印的是？"
+    sd "身后的折纸就是哦~"
+    tx "哦~鸢一是吗？我知道了"
+    tx "那个.....早上好鸢一...."
+    to "............"
+    "毫无疑问，鸢一再次无视了我，径直向士道的方向走去"
+    tx "什么啊.....又无视我"
+    hide tohka1
+    hide shido_2
+    scene classw with fade
+    show shido_2 at center with dissolve
+    show origami normal at scene_1_show10_12() with dissolve
+    show tohka1 at left with dissolve
+    to "士道，早上好"
+    sd ".....折纸，你这样其实也怪伤人的....."
+    yt "太慢了！折纸，我都已经！得到士道的摸头奖励了"
+    to "奖励？"
+    to "你在说什么？摸头不是对宠物才会有的方式吗"
+    sd ".....诶？"
+    to "所以说，士道只是把你当成一个小动物对待而已"
+    show tohkaaz at left with dissolve
+    pause 1.0
+    hide tohka1
+    play sound "sound/爆炸大01.ogg"
+    yt "！！！"
+    show tohka_sr at left with dissolve
+    pause 1.0
+    hide tohkaaz
+    yt "士......士道，她说的是真的吗？"
+    to "我说的对吧士道，恋人之间需要更亲密的举动哦"
+    to "需要现场演示一遍吗？"
+    scene black
+    scene classw at linear_move3_1() with dissolve
+    show shido_2 at center
+    show origami normal at scene_1_show10_12()
+    show tohka_sr at left
+    sd "啊！等等啊折纸！"
+    sd "摸头确实是动物比较多了，但是我对十香不是那个意思哦"
+    to "切....."
+    tx "........."
+    sd "总之不是大家想的那样了，总之快点去看分班名单吧"
+    yt "好！"
+    hide shido_2
+    hide origami normal
+    hide tohka_sr
+    "看过分班名单后，因为有琴里的暗箱操作，士道的班级基本毫无变化，但我由于是插班生，所以不能第一时间进教室"
+    "（主视角切换：士道）"
+    stop music
+    play music "bgm/bgm38_01.mp3"
+    scene BG0101 with fade
+    play sound "sound/0048.ogg"
+    xz "咳咳，大家先安静一下"
+    all_people "好！"
+    xz "首先，恭喜大家还在同一班哦"
+    xz "在老朋友的回归后，这一学期还会有一个新朋友！"
+    xz "现在就要介绍给大家认识了，大家要好好相处哦"
+    play sound "sound/0029.ogg"
+    all_people "好..........."
+    xz "那么，请进"
+    play sound "sound/0020.ogg"
+    play sound "sound/0048.ogg"
+    "会是怎么样的一个人呢~又会是漂亮的女生吗"
+    "我到希望是个男生，不然又会被五河那小子...."
+    stop sound
+    show tianxi_11 at center with dissolve
+    xz "这位就是我们的新朋友，物部天希同学！"
+    "什么啊，真的是男生啊"
+    "长相倒是不赖嘛，这次或许五河下不了手了"
+    "台下议论纷纷，小珠拍了拍手示意大家安静"
+    xz "那么物部同学，可以为大家进行一段简单的自我介绍吗？"
+    stop music
+    play music "bgm/bgm39_01.mp3"
+    tx "............"
+    "站在台前的天希好像很紧张吗？说的也是，我好像没和他说过有关学校的流程之类的..."
+    sd "没办法了.....试一试，试着眼神交流吧"
+    scene black with fade
+    tx "（以下均为眼神交流）开场白？我可没听你说过士道"
+    sd "不.....我以为天希你知道的"
+    sd "没事的，只要在不触及之前说的禁项就可以了"
+    tx "哦~是吗？原来如此，那我就随便发挥了，绝对百分百合理！"
+    sd "虽然有种不详的预感.....不过算了，只是开场白"
+    play sound "sound/0035.ogg"
+    show tohka normal at left with dissolve
+    yt "士道，你和天希用眼神在说什么悄悄话呢？"
+    sd "没什......喂！为什么十香也能进入交流啊"
+    yt "唔....看来被小看了呢，我是精灵的大前辈，当然和士道眼神交流这种事不在话下了！"
+    play sound "sound/0035.ogg"
+    show origami normal at scene_1_show10_12() with dissolve
+    to "像这样眼神交流是恋人的基本功，我和士道每天晚上的时候.....无需说话就能明白，对方舒服的地方...."
+    yt "呜哇.....什么舒服的地方啊"
+    to "大人的游戏，而已..."
+    sd "折纸！别再捏造回忆了！"
+    hide tohka normal
+    hide origami normal
+    scene BG0101 with fade
+    show tianxi_11 at center with dissolve
+    "回到正常时间，所有同学和小珠老师都在盯着天希"
+    tx "............"
+    tx "我的名字是物部天希..........."
+    tx "是个人类！"
+    play sound "sound/0020.ogg"
+    all_people "诶？？"
+    tx "....................."
+    all_people "..................."
+    tx "....................."
+    xz "那个.....物部君？"
+    xz "之后呢？"
+    tx "之后？哪有什么之后，不是没有了吗？"
+    tx "自我介绍这些就足够了吧..........."
+    xz "那个.....关于这个呢"
+    "这算什么啊！起码说一下你的兴趣爱好之类的啊！"
+    "生日啊，以前在哪个学校啊，明明还有很多可以说的吧！"
+    tx ".................."
+    sd "这可糟了........."
+    "不出我所料，天希现在如同一个对人类社会一知半解的状态，怎么办.....怎么办才能圆过去....."
+    tx "..........那种事"
+    play sound "sound/0018.ogg"
+    tx "没有明确规定要说吧......！"
+    all_people "眼神好凶......."
+    xz "嘛....既然物部同学不想说的话....就算了吧，你的座位在五河同学的后面哦"
+    tx "我知道了"
+    play sound "sound/0022.ogg"
+    tx "诶....等等，好像表示感谢的方式....."
+    tx "好好想想，士道当时的样子"
+    play sound "sound/0035.ogg"
+    tx "那个....我摸我摸....."
+    scene black
+    scene BG0101 at linear_move3_1() with dissolve
+    show tianxi_11 at center
+    all_people "哇！"
+    xz "诶.........啊！"
+    sd "啊............天希你这家伙......"
+    tx "？你们怎么了，这不是表示感谢的方式吗？"
+    tx "有什么问题吗？"
+    xz "唔唔唔......抱歉物部同学，虽然你也不错，但老师已经名花有主了......"
+    tx "？"
+    my1 "这种熟悉的行为.....难道...物部同学和五河君......"
+    my1 "滥用长相的衣冠禽兽......你还有何话说！真是受不了....."
+    sd "不.....这个是...."
+    yt "哦~这个动作，哦！是士道的奖励啊，嘿嘿，早上我也收到了呢"
+    scene black
+    scene BG0101 at linear_move3_1() with dissolve
+    sd "快住口啊十香！"
+    my1 "连十香酱也被......你这个罪无可恕的男人啊！"
+    sd "不是啊，不是你们想的那样啊！"
+    sd "谁来救救我啊！"
+    "就这样，早晨的班会在吵闹中结束了.....接下来就是让天希去学校的各个地方熟悉一下了...."
+    window hide
+    scene black with fade
+    return
+
+label tianxi_12_1: #走廊
+    window show
+    tx "要不还是去别的地方吧..."
+    window hide
+    stop music
+    $ a=1
+    call screen choice_3(a,b,c,d,e,f) with dissolve
+    # return
+
+label tianxi_12_2: #保健室
+    window show
+    tx "要不还是去别的地方吧..."
+    window hide
+    stop music
+    $ b=1
+    call screen choice_3(a,b,c,d,e,f) with dissolve
+    # return
+
+label tianxi_12_3: #教室(3班)
+    stop music
+    play music "bgm/bgm18_01.mp3"
+    scene classw with fade
+    window show
+    tx "听说上次的精灵二人组也在这个学校，好像叫八舞吧..........好像在隔壁的3班"
+    play sound "sound/Se_00011.ogg"
+    scene classroom with fade
+    tx "就是这里吗？"
+    tx ".........看来好像没人在，回去......."
+    ka "目标发现，夕弦！实行抓捕行动！"
+    yu "明白！呜呀！抓捕！"
+    scene black
+    show classroom at linear_move3_1()
+    play sound "sound/Se_00003.ogg"
+    play sound "sound/lbw/哎呀！~~~~~.ogg"
+    lbw "诶呀！！！！！！"
+    stop sound
+    tx "..........."
+    tx "哦呀？这不是新乐园那个人吗？"
+    tx "怎么会在这里？"
+    show kaguya angry1 at left with dissolve
+    show yuzuru_ag at right with dissolve
+    ka "天希吗？来的正好，来一起把这个家伙押往信息教室吧！"
+    tx "信息教室？"
+    play sound "sound/lbw/为什么会这么说呢.ogg"
+    lbw "为什么会这么说呢，你看都说到押走了吧！"
+    stop sound
+    lbw "游戏玩不过我就说我开挂"
+    play sound "sound/lbw/他这个把我搞得很烦你知道吧.ogg"
+    lbw "她们真的给我搞得很烦知道吗？"
+    stop sound
+    lbw "而且这年头啊你们玩游戏总喜欢，超级加倍啊超级加倍！超级加倍！"
+    lbw "一点都不想一想输了会怎样"
+    ka "你很烦啊！这和你没去上课是两码事吧！"
+    yu "同意"
+    ka "我们八舞能抓到你一次，就能抓住你无数次 ！放弃抵抗吧！"
+    play sound "sound/lbw/放我一马_老铁.ogg"
+    lbw "放我一马吧，老铁....这次我..."
+    stop sound
+    all_people "不可能！"
+    tx "想老实的话这还不简单~"
+    tx "我有个好东西要不要看啊~老师"
+    lbw "什么东西？"
+    scene black
+    show classroom at linear_move3_1()
+    show kaguya angry1 at left
+    show yuzuru_ag at right
+    play sound "sound/啊.ogg"
+    lbw "啊~这是"
+    lbw "你从哪找的的......."
+    lbw "秘密~想解决的话乖乖去上课"
+    lbw "....切，不就是上课嘛，我今天就教你们如何开挂！"
+    tx "？？开挂？"
+    lbw "啊.....没什么"
+    hide kaguya angry1
+    hide yuzuru_ag
+    window hide
+    stop music
+    $ c=1
+    call screen choice_3(a,b,c,d,e,f) with dissolve
+    # return
+
+label tianxi_12_4: #教室(4班)
+    window show
+    tx "要不还是去别的地方吧..."
+    window hide
+    stop music
+    $ d=1
+    call screen choice_3(a,b,c,d,e,f) with dissolve
+    # return
+
+label tianxi_12_5: #校门口
+    window show
+    tx "要不还是去别的地方吧..."
+    window hide
+    stop music
+    $ e=1
+    call screen choice_3(a,b,c,d,e,f) with dissolve
+    # return
+
+label tianxi_12_6: #教学楼后
+    stop music
+    play music "bgm/bgm11_01.mp3"
+    scene classbd with fade
+    window show
+    tx "这里好安静啊.....哦吼，我喜欢......"
+    my1 "............"
+    my1 "..........."
+    show meiy with dissolve
+    my1 "什么啊，是你这个步五河君后尘的人啊"
+    tx "总感觉说法很 不舒服....什么意思？"
+    my1 "我说你啊，五河君可不是什么值得效仿的对象哦~"
+    tx ".............."
+    my1 "稍有不慎就会直接bad end哦"
+    my1 "好好想想吧....新人"
+    hide meiy
+    play sound "sound/0022.ogg"
+    tx "............意义不明"
+    window hide
+    stop music
+    $ f=1
+    call screen choice_3(a,b,c,d,e,f) with dissolve
+    return
+
+label juchang_1_1: #剧场版
+    # 全员退场&消除图像
+    # 开场
+    play sound 'sound/Se_00061(按键音).ogg'
+    scene white with dissolve
+    $ renpy.movie_cutscene('audio/transm.ogv')
+    stop music
+    # 开场结束
+    play music 'bgm/剧场版-music-恬静.mp3'
+    scene keting with dissolve
+
+    '今天是一年一度的暑假狂欢日，作为暑假的第一天，某些人自然高兴的不得了，于是就在五河家举办了这场狂欢会！'
+    '士道，耶俱矢，夕弦，十香，折纸，殿町等人则成为了这场狂欢的主角'
+
+    # 场景1
+    show kaguya_1 at center as kaguya_1_scene_1_1
+    ka '啊哈哈哈！让吾们为恶魔之地的暂时关闭而狂欢吧！朋友们!'
+    '耶俱矢举起杯子，看样子想要找人与他碰杯'
+    hide kaguya_1_scene_1_1 with dissolve
+    all_people '......'
+    show kaguya_1 at left
+    ka '嗯.....嗯？大家！'
+    dd '嘛......是呢'
+    show yuzuru_1 at right
+    yu '呵呵，耶俱矢尴尬.jpg'
+    # 变更ka 生气
+    show kaguya angry at left
+    ka '搞什么！大家难道都不对恶魔之地的关闭而高兴吗！'
+    yu '更正，只是对耶俱矢是恶魔之地吧，毕竟耶俱矢的....'
+    ka '不许说！夕弦！'
+    dd '但是！不管怎么说，暑假还是一个让人开心的事情嘛，你说是吧！五河'
+    sd '嘛.....比起这个'
+    sd '为什么你也在这......'
+    hide yuzuru_1 
+    hide kaguya angry
+    hide kaguya_1
+    # 场景1 结束
+
+    # 场景2
+    show tohka normal at left
+    yt '说到天希，他去哪了？'
+    sd '他啊.....早就在里面呼呼大睡呢.....毕竟他也一样讨厌学校'
+    show origami normal at right
+    stop music fadeout 1
+    play music 'bgm/快乐的脚步（短循环）.mp3' fadein 0.5
+
+    to '徒弟怎么样无所谓，士道，来尝尝我亲自做的甲鱼汤'
+    '本以为这种场合折纸端出来的东西肯定是那种奇怪的黑暗料理，但这次却出奇的正常，并且打开盖子飘来的香气惹得十香直流口水'
+    yt '啊！我也想吃......啊不对，士道！你也尝尝我做的饼干！'
+    to '这是你的份，十香'
+    '折纸似乎猜到有这种情况，又拿出一份端到了十香眼前'
+    yt '哇！太....额不对！我不会上当的，不过真的好香~'
+    yu '请求，大师折纸的汤这次夕弦也想要喝'
+    ka '啊我也要！'
+    dd '我也有份吗？'
+
+    show black with fade
+    '会场逐渐陷入混乱，大家在抢夺甲鱼汤的同时，夕弦不小心将身上的挂饰甩了出去，砸到了士道'
+    python:
+        for i in range(3):
+            renpy.sound.play('sound/搏击拳脚.ogg',channel= 'sound')
+            renpy.pause(0.25)
+    scene keting with dissolve
+    sd '啊，疼疼疼....'
+
+    show tohka normal at left
+    yt '没事吧！士道！'
+    sd '啊没事没事......诶这个是？'
+    stop music fadeout 1.0
+    play music 'bgm/Departure.mp3' fadein 0.5
+    '仔细一看，这个首饰正是当时万由里事件时由士道买给夕弦的首饰'
+    sd '这个是...嗯'
+    show yuzuru_1 at right
+    yu '总感觉想起万由里了吧，士道'
+    sd '嗯！万由里'
+    dd '万由里！好像听你们说过但是我没见到过啊'
+    sd """
+    你没见过的东西多了.....
+
+    嘛....反正今天是高兴的日子，不如我给大家讲一下我和万由里的约会吧
+    """
+    all_people '好！'
+    play sound 'sound/空间相位.ogg'
+    show tianxi smile at center
+    tx '诶？感觉会很有趣嘛'
+    # 晃动
+    scene black
+    show keting at huangdong() with dissolve
+    # show tohka normal at left with disv2
+    # show yuzuru_1 at right with disv2
+    show tianxi smile at center with disv2
+    dd '喂!你这家伙又是突然就冒出来！'
+    sd '你不是睡着了吗'
+    show tianxi_1 at center
+    tx '你们这么吵谁还睡的着，比起这个，我更喜欢听别人的故事哦'
+    sd '既然这样的话，那开始吧.......'
+    #全员退场
+    stop music fadeout 1.0
+    scene white with dissolve
+    #第二幕结束
+
+    #第三幕-上半
+    scene jiaoshi_2 with dissolve
+    sd '那一天，我在学校的天台上与万由里重逢，万由里呢则对我提出了......'
+    play sound 'sound/sound_juchang/前半段语音/G2_01.mp3'
+    sd '果然这样不太好吧......'
+    stop sound
+
+    play music 'bgm/Bgm_00002.mp3'
+
+    play sound 'sound/sound_juchang/前半段语音/G3_01.mp3'
+    sd '在被发现之前还是赶紧......'
+    stop sound
+
+    show mayuri_1 at center
+
+    play sound 'sound/sound_juchang/前半段语音/G4_01.mp3'
+    ma '今天不是说今天陪我去想去的地方吗，士道？那是骗我的？'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/G5_01.mp3'
+    sd '没骗你，但没想到会在夜里潜入学校啊（万由里：有什么关系）'
+    stop sound 
+
+    play sound 'sound/sound_juchang/前半段语音/G6_01.mp3'
+    ma '我也对士道所上的学校有兴趣'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/G7_01.mp3'
+    sd """
+    但是啊~(万由里：没关系，被发现的话去道歉就好了.....士道一个人去）为什么啊！
+
+    至少也要一起去道歉吧
+    """
+    ma '啊！发现小卖部！'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/1(1).mp3'
+    sd '喂！万由里！'
+    stop sound
+
+    scene outside_grocery with fade
+    show mayuri_1 at center
+    play sound '/sound/sound_juchang/前半段语音/2.mp3'
+    ma '士道！快一点！'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/3.mp3'
+    sd '啊（叹气）真是的'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/4.mp3'
+    ma '炒面包，蜜瓜包，奶油面包，士道总之在这买午饭的吗？'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/5.mp3'
+    sd '不，我是自制便当派'
+    stop sound    
+    
+    play sound 'sound/sound_juchang/前半段语音/6.mp3'
+    ma '啊是这样，很擅长料理。诶？鸟馅面包？这是什么？'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/7.mp3'
+    sd '啊，那是我的强力推荐'
+    ma '诶？不会吧'
+    stop sound
+
+    #play sound 'sound/sound_juchang/前半段语音/8.mp3'
+    #stop
+
+    play sound 'sound/sound_juchang/前半段语音/9.mp3'
+    sd '为什么啊？这还是很不错的哦'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/10.mp3'
+    ma '真的吗？，那下次买吧，如果吃第一口觉得难吃的话，你给我猛虎落地式跪哦~'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/11.mp3'
+    scene black with fade
+    show outside_grocery at huangdong()
+    show mayuri_1 at center
+    sd '有必要做到这种程度吗？'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/12.mp3'
+    ma '开玩笑的啦，但是是呢。那我就尝尝士道做的料理吧'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/13.mp3'
+    sd '什么啊~，是这样的话我随时都可以给你做哦'
+    yt '（士道的料理，确实很好吃啊！）'
+    to '（别打岔，士道，你接着说）'
+    sd '（额好，接着.....）'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/14.mp3'
+    ma '诶？真的吗？'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/15.mp3'
+    sd '你想吃什么？'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/16.mp3'
+    ma '诶.....恩，便当吧'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/17.mp3'
+    ma '我想吃士道一直在学校吃的便当'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/18.mp3'
+    sd '啊，这样啊，那我可得加把劲做了！'
+    ma '汉堡肉，别忘了哦'
+    stop sound
+
+    #play sound 'sound/sound_juchang/前半段语音/19.mp3'
+    #stop
+
+    play sound 'sound/sound_juchang/前半段语音/20.mp3'
+    sd '当然！（拉门）'
+    stop sound
+
+    scene meetingroom_day with fade
+    show mayuri_1 at center
+
+    play sound 'sound/sound_juchang/前半段语音/21.mp3'
+    sd '这里就是音乐室'
+    tx '（音乐室？还有这个课程吗？）'
+    ka '（嘛....和信息课一个性质吧...）'
+    tx '（该死的占课.....）'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/22.mp3'
+    ma '诶~还集齐了不少乐器呢。士道会用什么乐器吗？'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/23.mp3'
+    scene main_cg_0607
+    sd '嗯.....会些吉他，还有一次在文化祭上举行Live'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/24.mp3'
+    ma '呐，那你弹一下吧'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/25.mp3'
+    sd '现..现在不行的吧，会引来警卫的哦'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/26.mp3'
+    ma '啊什么啊.....明明在LIve上让大家都听到了，只有我不行嘛...'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/27.mp3'
+    sd '额不是那样的啦，我会在其他时候谈给你听的啦'
+    stop sound
+
+    play sound '/sound/sound_juchang/前半段语音/28.mp3'
+    ma '真的？那能重现Live时的服装吗？'
+    stop sound
+
+    play sound '/sound/sound_juchang/前半段语音/29.mp3'
+    ma '额！那个就有点.......'
+    ka '在说士织小姐呢~'
+    tx '士织？是谁？'
+    sd '你不需要知道！'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/30.mp3'
+    ma '怎么了？当时发生什么事了吗？你不会想要瞒着我,,,,,,'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/31.mp3'
+    sd '嘛....有很多特殊情况，Live的时候是士织状态'
+    stop sound
+
+    #play sound 'sound/sound_juchang/前半段语音/32.mp3'
+
+    play sound 'sound/sound_juchang/前半段语音/33.mp3'
+    ma '什么？快点坦白啊'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/34.mp3'
+    sd '....服装是...女仆装（妹抖服）....'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/35.mp3'
+    ma '女仆？'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/36.mp3'
+    sd '啊...文化祭时也穿着女仆装工作，所以就....'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/37.mp3'
+    ma '我也想看！（士道：诶？）'
+    all_people '（我们也想！）'
+    sd '（啊，饶了我吧）'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/38.mp3'
+    ma '决定了，下一次约会就在车站前广场举行女仆士织酱的吉他Live.我会边吃着士道做的便当边在远处看着你'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/39.mp3'
+    scene black with disv2
+    show main_cg_0607 at huangdong()
+    # show mayuri_1 at center
+    sd '那不是公开处刑的吗！我是绝对不会干的啦！'
+    stop sound
+    #第三幕上半-结束
+
+    #第三幕下半
+    play sound 'sound/sound_juchang/前半段语音/40.mp3'
+    ma '虽然嘴上这么说，我想最终士道还是会去做的'
+    stop sound
+
+    play sound 'sound/sound_juchang/前半段语音/41.mp3'
+    sd '啊...饶了我吧.....'
+    stop sound
+    stop music fadeout 1.0
+    play music 'bgm/剧场版-music-恬静.mp3' fadein 1.0
+
+    scene jiaoshi_2 with fade 
+    show mayuri_1 at center
+    pause 1.0
+    show mayuri smile at center
+    play sound 'sound/sound_juchang/前半段语音/42.mp3'
+    ma '其他没逛的地方，还有体育馆保健室.....'
+    stop sound
+
+    hide mayuri smile with dissolve
+    play sound 'sound/sound_juchang/前半段语音/43.mp3'
+    sd '呐，万由里，已经很晚了，我们还是赶紧回去吧'
+    stop sound
+
+    show mayuri unhappy at center
+    play sound 'sound/sound_juchang/前半段语音/44.mp3'
+    ma '嗯，说的也是，但在最后我有想去的地方，不行吗？'
+    stop sound
+    play sound 'sound/sound_juchang/前半段语音/45.mp3'
+    sd '呵，我知道了，最后的咯，那么是哪呢？'
+    stop sound
+
+    scene jiaoshi_2
+    show mayuri unhappy withoutDissolve at center
+    show mayuri_1 withoutDissolve at center with Dissolve(0.7)
+    play sound 'sound/sound_juchang/后半段语音/x1.mp3'
+    ma '那个...士道的教室'
+    stop sound
+    #shido教室
+    scene BG0102 with fade
+    show mayuri_1 at center
+
+    play sound 'sound/sound_juchang/后半段语音/x2.mp3'
+    sd '最后去的是这种地方真的好吗？'
+    stop sound
+
+    play sound 'sound/sound_juchang/后半段语音/x3.mp3'
+    ma '可以，哦~'
+    stop sound
+
+    play sound 'sound/sound_juchang/后半段语音/x4.mp3'
+    ma '怎么说呢...普通'
+    stop sound
+
+    play sound 'sound/sound_juchang/后半段语音/x5.mp3'
+    sd '那是当然的了，在哪都能看到的普通教室呢'
+    stop sound
+    tx '（但是呢，要是教室里面充满了人或许就不普通了.....）'
+    sd '（天希？）'
+    tx '（没什么...）'
+
+
+    play sound 'sound/sound_juchang/后半段语音/x6.mp3'
+    ma '的确啊，但是。我想到士道所在的这个教室'
+    stop sound
+
+    play sound 'sound/sound_juchang/后半段语音/x7.mp3'
+    ma '真好啊，我也想成为士道的同班同学'
+    sd '诶？'
+    stop sound
+    # chara清场
+    scene white with dissolve
+
+    #将mayuri_cg1置顶
+    #renpy.add_layer(name=mayuri_cg1_layer,above=master,below=None)
+    show mayuri_cg1 at right onlayer mayuri_cg1_layer
+    play sound 'sound/sound_juchang/后半段语音/x8.mp3'
+    ma '如果呢，如果我和士道在同一个教室上课'
+    scene BG0101 with Dissolve(1)
+    pause 1.0
+    scene BG0601 with Dissolve(1)
+    pause 1.0
+    hide mayuri_cg1 with dissolve
+    hide mayuri_cg1 onlayer mayuri_cg1_layer with dissolve
+    scene bg_mayuri_cg1 with dissolve
+    stop sound
+
+    play sound 'sound/sound_juchang/后半段语音/x9.mp3'
+    ma '首先，在早晨和士道碰头，一起上学，上课的时候避开老师的眼神，和你交换小小的信件'
+    stop sound
+    scene outside_grocery day with dissolve
+    pause 1.0
+    scene bg_mayuri_cg2 with dissolve
+
+    voice 'sound/sound_juchang/后半段语音/x10.mp3'
+    ma '休息时间如果肚子饿了的话，在小卖部买回面包后和你半分着吃，到了中午，和你一起吃便当，放学后，和你一起绕道，穿着制服约会'
+    scene white with dissolve
+    scene BG0102 with dissolve
+    show mayuri at center
+    show mayuri smile at center
+    voice 'sound/sound_juchang/后半段语音/x11.mp3'
+    ma '说笑的......'
+    show mayuri_1 at center
+    voice 'sound/sound_juchang/后半段语音/x12.mp3'
+    sd '万由里......'
+
+    play sound 'sound/sound_juchang/后半段语音/x13.mp3'
+    ma '呐，士道，我也想上一次课'
+    sd '上课？'
+    stop sound
+
+    voice 'sound/sound_juchang/后半段语音/x14.mp3'
+    ma '嗯，我不是说过，对士道在学校干什么有兴趣'
+
+    voice 'sound/sound_juchang/后半段语音/x15.mp3'
+    sd '啊，但是老师又不在'
+
+    voice 'sound/sound_juchang/后半段语音/x16.mp3'
+    ma '不是有嘛，士道老师~'
+
+    voice 'sound/sound_juchang/后半段语音/x17.mp3'
+    ma '好了，快站到讲台上'
+
+    voice 'sound/sound_juchang/后半段语音/x18.mp3'
+    sd '等等，我当老师什么的...等，别推我啊'
+
+    voice 'sound/sound_juchang/后半段语音/x19.mp3'
+    ma '这样就行~，那我的座位就是...士道眼前的这个好了'
+
+    voice 'sound/sound_juchang/后半段语音/x20.mp3'
+    ma '好，士道老师，我有问题，喜欢上一个人是怎么一回事呢？'
+
+    stop music fadeout 1.0
+    play music 'bgm/帆足圭吾-3人でいる時間.mp3' fadein 1.0
+
+    voice 'sound/sound_juchang/后半段语音/x21.mp3'
+    sd '诶？为什么要问这个啊'
+
+    voice 'sound/sound_juchang/后半段语音/x22.mp3'
+    ma '因为，学生不就是要向老师提出问题的吗'
+
+    voice 'sound/sound_juchang/后半段语音/x23.mp3'
+    sd '虽说是这样啊.....'
+
+    voice 'sound/sound_juchang/后半段语音/x24.mp3'
+    sd '嗯，说实话我也不太懂，比如说......'
+
+    voice 'sound/sound_juchang/后半段语音/x25.mp3'
+    sd '比如说..想知道对方更多，想成为那个人的特别，想两个人一起生活之类的....'
+
+    voice 'sound/sound_juchang/后半段语音/x26.mp3'
+    ma '就是这样的吧，大概....'
+
+    play sound 'sound/sound_juchang/后半段语音/x27.mp3'
+    ma '嗯，总觉得这样不错'
+    sd '哦？'
+    stop sound
+
+    voice 'sound/sound_juchang/后半段语音/x28.mp3'
+    ma '是因为我从来没试过普通的恋爱，今后肯定也是不可能的'
+
+    voice 'sound/sound_juchang/后半段语音/x29.mp3'
+    sd '没有那种.....糟了！门卫来巡逻了！'
+    
+    voice 'sound/sound_juchang/后半段语音/x30.mp3'
+    sd '要躲起来了，万由里快过来！'
+
+    scene lovely_bedroom_night with dissolve
+    show lovely_bedroom_night at huangdong
+
+    voice 'sound/sound_juchang/后半段语音/x31.mp3'
+    ma '（藏在桌子底下）士道，这里好挤'
+
+    voice 'sound/sound_juchang/后半段语音/x32.mp3'
+    sd '没办法啊....这可是桌子底下'
+
+    voice 'sound/sound_juchang/后半段语音/x33.mp3'
+    ma '呐，手，碰到了'
+
+    play sound 'sound/sound_juchang/后半段语音/x34.mp3'
+    ma '色狼...（士道：啊这是不可抗力啊！）'
+    dd '哦~讲到高潮地方了，五河，手感....'
+    sd '殿町！'
+    stop sound
+
+    voice 'sound/sound_juchang/后半段语音/x35.mp3'
+    ma '呐，士道（士道：嘘~会被发现的）就一会会'
+
+    voice 'sound/sound_juchang/后半段语音/x36.mp3'
+    ma '这也是...士道平常会做的事情吗'
+
+    voice 'sound/sound_juchang/后半段语音/x37.mp3'
+    ma '或者...是特别的吗？（士道：哦...嘛，是啊）'
+
+    voice 'sound/sound_juchang/后半段语音/x38.mp3'
+    ma '这样啊'
+
+    voice 'sound/sound_juchang/后半段语音/x39.mp3'
+    sd '啊..看来没找到我们，万由里，已经可以出来了哦'
+
+    voice 'sound/sound_juchang/后半段语音/x40.mp3'
+    ma '等等，再这样待一会'
+
+    play sound 'sound/sound_juchang/后半段语音/x41.mp3'
+    scene bg_mayuri_cg3
+    ma '呐士道，我即使当不上士道的同班同学也无所谓，只要在这里度过特别的时光的话，只要这样，我就满足了'
+    stop sound
+
+    voice 'sound/sound_juchang/后半段语音/x42.mp3'
+    sd '呵，我知道了...(万由里：谢谢）'
+    # 第三幕下半 结束
+
+    #第四幕
+    scene white with dissolve
+    scene keting with dissolve
+    sd '然后.........'
+    show tohka normal at left
+    yt '没想到还有这一段感人的故事啊....'
+    show yoshino hat sad at center
+    yn '呜呜呜....万由里姐姐'
+    sd '四糸乃？喂？大家都到了？'
+    show kutori taunt at right
+    ik '''呵，看你在讲故事就没忍心打断你
+    
+    所以，之后呢'''
+    sd '啊，之后'
+    tx '很普通的故事嘛...啊，听不下去了（起身出门）'
+    show tohka angry at left
+    yt '唔唔唔唔唔唔！天希你也太！'
+
+    # 全员退场
+    scene keting with dissolve
+    pause 1.0
+    '士道看着天希远去的背影，似乎明白了什么，微笑了一下之后继续给大家讲述剩余的故事'
+
+    play sound 'sound/Se_00011.ogg'
+    scene red_brick_house with Fade(2,1,1)
+
+    tx '''切，什么啊，没想到还会有人渴望学校那种生活...太不合理了...
+
+    呵呵，但是呢，现在和大家在一起的日子确实很让人羡慕就是了
+
+    ....万由里吗，如果你现在也在这的话，想必也会讨厌我吧~
+
+    但是呢，如果你真的能再次出现在我们眼前，我一定要改变你的想法
+
+    什么必然，什么必须消失的命运，这种东西怎么可能斩断你与士道他们的牵绊....
+
+    你看着吧.....'''
+
+    scene white with Dissolve(2)
+    # 第四幕结束
+    $ renpy.movie_cutscene('audio/threater_edition_ending.ogv')
+    # 剧场版结束
+    return
+
+label juchang_1_2: #剧场2 ----- td2
+    # 角色格式 同时只能存在2图层
+    # 全员退场&消除图像
+    scene white 
+    # 开场
+    play sound 'sound/Se_00061(按键音).ogg'
+    scene white with dissolve
+    $ renpy.movie_cutscene('audio/transm.ogv')
+    stop music
+    # 开场结束
+    scene BG1701 with dissolve
+    play music 'bgm/剧场版bgm01.mp3' fadein 1  
+    show kutori_taunt at left
+
+    voice 'sound/sound_juchang2/剧场一/1.mp3'
+    ik '终于，大天宫偶像盛典，简称天FES的盛典终于要举行了呢，凛绪！'
+
+    show rio_0 at right
+    voice 'sound/sound_juchang2/剧场一/2.mp3'
+    rio '一年一度的偶像盛典呢，琴里酱！'
+
+    voice 'sound/sound_juchang2/剧场一/3.mp3'
+    ik '嗯，是啊。这对于我们来禅偶像候补生来说可是出道的最好机会！'
+
+    show rio_3 at right
+    voice 'sound/sound_juchang2/剧场一/4.mp3'
+    rio '以成为偶像为目标，每天都在战斗着呢'
+
+    voice 'sound/sound_juchang2/剧场一/5.mp3'
+    ik '嗯！我和凛绪的组合  sister  and  daughter  ，现在是以校内偶像排名中的第二位，今年要以优胜为目标'
+
+    voice 'sound/sound_juchang2/剧场一/6.mp3'
+    rio '简直就像某人名字的组合呢'
+
+    play sound 'sound/sound_juchang2/剧场一/7.mp3'
+    show rio_4 at right
+    hide rio_0
+    rio '但是，琴里酱，要想要优胜的话就得将爸爸..不对，那个绝对最强Top神一般的偶像打败才行哦'
+    stop sound
+
+    show kutori_unhappy at left
+    voice 'sound/sound_juchang2/剧场一/8.mp3'
+    ik '是啊，最强的偶像——Prince  of prince  五河士道，连续两年在偶像盛典的王座上闪耀，这个学校的NO.1，也是我的义兄'
+
+    show rio_2 at right
+    hide rio_3
+    voice 'sound/sound_juchang2/剧场一/9.mp3'
+    rio '真不愧是爸爸啊！爸爸好厉害啊！'
+
+    show kutori_az at left
+    hide kutori_taunt
+    voice 'sound/sound_juchang2/剧场一/10.mp3'
+    ik ' 爸爸？嘛，先把这个放一边，士道的确是最强的偶像。但是！这样的男人也是有弱点的'
+
+    voice 'sound/sound_juchang2/剧场一/11.mp3'
+    rio '弱点？必胜法？'
+
+    show kutori_taunt at left
+    hide kutori_unhappy
+    voice 'sound/sound_juchang2/剧场一/12.mp3'
+    ik '嗯，是必胜法哦，士道也是正值青春期的男子高中生，而且为了不出任何问题还做了各种准备，只要有美少女，会怎么样你也知道吧'
+
+    show rio_5 at right
+    hide rio_4
+    pause 1
+    show rio_6 at right
+    hide rio_2
+    voice 'sound/sound_juchang2/剧场一/13.mp3'
+    rio '.....不知道哦~'
+
+    show kutori_taunt withoutDissolve at chara_huangdong()
+    hide kutori_az
+    pause 0.5
+    show kutori_unhappy at left
+    # show kutori_unhappy
+    voice 'sound/sound_juchang2/剧场一/14.mp3'
+    ik '额....嘛，那个，就像我们和士道关系那样好就没事了，然后只要在网上传一张照片，士道的人气一定会下降的'
+
+    show rio_4 at right
+    hide rio_5
+    voice 'sound/sound_juchang2/剧场一/15.mp3'
+    rio '哦~丑闻    凛绪，有点兴奋起来了呢！但是，这样做不太好吧？！琴里酱.....'
+
+    show kutori_az at left
+    hide kutori_taunt
+    voice 'sound/sound_juchang2/剧场一/16.mp3'
+    ik '嘛...只是这一次..这也是没办法的啦，女人也有不得不上的时候！然后...话说回来，只要拍到照片，我们只用说我们是在不知情的情况下被带走的，大家一定会回避萝莉控偶像的'
+
+    voice 'sound/sound_juchang2/剧场一/17.mp3'
+    rio '五河士道不是琴里酱的哥哥吗？'
+
+    voice 'sound/sound_juchang2/剧场一/18.mp3'
+    ik '嗯，但是没关系，得赶紧让大家的士道毕业'
+
+    show rio_3 at right with Dissolve(0.5)
+    hide rio_6
+    voice 'sound/sound_juchang2/剧场一/19.mp3'
+    rio '哦....我好像明白了！'
+
+    voice 'sound/sound_juchang2/剧场一/20.mp3'
+    ik '让我们一起努力吧！如果成功的话，star就在眼前！'
+
+    voice 'sound/sound_juchang2/剧场一/21.mp3'
+    rio '哦斯~'
+
+    # 全员退场
+    scene BG1701 with dissolve
+    scene meetingroom_day with Fade(2,1,1)
+    '天宫市警察局内部，一个身穿警服淡蓝色头发的男子正在目不转睛的看着电视上的偶像演唱会直播'
+
+    show tianxi smile_1 at left
+    tx '...........'
+    play sound 'sound/Se_00011.ogg'
+
+    show natsumi_1 at right
+    '不一会警局的门被打开，同样身穿警服的少女一脸无聊的看着他'
+    nm '合理怪.....又在翘班偷懒吗.....'
+    tx '不知道你在说什么，看演唱会怎么能叫偷懒呢'
+
+    show natsumi_40 at right with Dissolve(0.5)
+    nm '你这家伙....我说啊！我们身为天宫市的民警，应当时刻保证市区的安宁......'
+    tx '''就算你这么说实际上也没活干吧，毕竟已经好久没有正经工作了
+
+    你也需要放松一下了，来吧！凛绪酱的歌很好听的~
+    '''
+    show natsumi_50 at right with Dissolve(0.5)
+    hide natsumi_1
+    nm '这家伙.......'
+
+    # 全员退场
+    scene meetingroom_day with Dissolve(0.5)
+    pause 0.5
+    play sound 'sound/敲木门1.ogg'
+    '咚咚'
+    nm '?'
+    tx '?'
+
+    stop music fadeout 1.0
+    play music 'bgm/剧场版bgm02.mp3' fadein 1.0
+
+    scene white with dissolve
+    scene BG1501 with dissolve
+
+    show mariya_0 cut at left with Dissolve(1)
+    voice 'sound/sound_juchang2/剧场二/1.mp3'
+    my '鞠奈，我们能在大天宫偶像盛典中获胜吗？'
+
+    show marina at right with Dissolve(1)
+    voice 'sound/sound_juchang2/剧场二/2.mp3'
+    mn '你在说什么不争气的话呢鞠亚！今年我们双星亚丽雅组合一定要获胜'
+
+    voice 'sound/sound_juchang2/剧场二/3.mp3'
+    my '我们已经两连败了！；两连败！竟然输给了那样站在舞台上的家伙！'
+
+    voice 'sound/sound_juchang2/剧场二/4.mp3'
+    my '嗯，五河士道这一存在是个强敌！'
+
+    voice 'sound/sound_juchang2/剧场二/5.mp3'
+    mn '那样太狡猾了！施展灵魂的阳光贝司手，压到一切的强大气场！以及，给世界添上色彩的完美voice'
+
+    voice 'sound/sound_juchang2/剧场二/6.mp3'
+    my '有着集合所有偶像魅力的绝对偶像，也有一与他对视就会窒息的粉丝。每次出场都带着太阳镜防止出现事故'
+
+    voice 'sound/sound_juchang2/剧场二/7.mp3'
+    mn '这还是第一次听说，到底怎么回事？'
+
+    voice 'sound/sound_juchang2/剧场二/8.mp3'
+    my '就是这么一回事，的确如鞠奈所说，我的确勇气不足。绝对要获胜..的决意引导我们走向胜利'
+
+    voice 'sound/sound_juchang2/剧场二/9.mp3'
+    mn '给我一开始就明白啊，妹妹'
+
+    voice 'sound/sound_juchang2/剧场二/10.mp3'
+    my '好的，姐姐.但是，我收集的数据是有极限的，有必要与他直接接触呢'
+
+    voice 'sound/sound_juchang2/剧场二/11.mp3'
+    mn '好好，随便你啦，我会陪着你的
+    '
+    voice 'sound/sound_juchang2/剧场二/12.mp3'
+    my '真是的，鞠奈可真不坦率'
+
+    voice 'sound/sound_juchang2/剧场二/13.mp3'
+    mn '你在说什么呢'
+
+    # 剧场三
+    scene white with dissolve
+    scene BG1901 at truecenter with dissolve
+    stop music fadeout 1.0
+    play music 'bgm/剧场版bgm03.mp3' fadein 1   
+
+    play sound 'sound/sound_juchang2/剧场三/1.mp3'
+    show BG1901 at huangdong as scene1
+    personA '快看快看！Prince of prince 士道大人哦！ 今天也超赞的！'
+    hide scene1
+    stop sound
+
+    voice 'sound/sound_juchang2/剧场三/2.mp3'
+    personB '不行啊！不能直视！但是好想看！士道大人！'
+
+    voice 'sound/sound_juchang2/剧场三/3.mp3'
+    sd '唉，真是麻烦呢，有这么多人聚集在这里，没办法，只能给粉丝们杀必死了。mua~不好意思能让我过去吗？'
+
+    play sound 'sound/sound_juchang2/剧场三/4.mp3'
+    show BG1901 at huangdong as scene2
+    all_people '士道大人！超帅！'
+    hide scene2
+    stop sound
+
+    voice 'sound/sound_juchang2/剧场三/5.mp3'
+    sd '嗯~稍微安静下来了呢~'
+
+    show kutori_taunt at left
+    voice 'sound/sound_juchang2/剧场三/6.mp3'
+    ik '给我站住，士道'
+
+    voice 'sound/sound_juchang2/剧场三/7.mp3'
+    sd '哎呦哎呦~这不是我的妹妹吗，难道是来挑战我的'
+
+    voice 'sound/sound_juchang2/剧场三/8.mp3'
+    ik '嗯，是啊士道，和我们一起约会吧！'
+
+    show kutori_taunt withoutDissolve at left onlayer mayuri_cg1_layer
+    hide kutori_taunt
+    show BG1901 at huangdong as scene3
+    
+    voice 'sound/sound_juchang2/剧场三/9.mp3'
+    sd '那就在舞台上!  诶？约会'
+    hide scene3
+    
+    show kutori_taunt withoutDissolve at left
+    show rio_0 at right
+    voice 'sound/sound_juchang2/剧场三/10.mp3'
+    rio '嗯！和凛绪，琴里酱一起约会吧！爸爸！'
+    hide kutori_tmp
+
+    voice 'sound/sound_juchang2/剧场三/11.mp3'
+    sd '连凛绪也...啊，对了，是组成一个组合了吧'
+
+    show rio_6 at right
+    voice 'sound/sound_juchang2/剧场三/12.mp3'
+    rio '是的哦！凛绪和琴里酱是偶像组合哦！'
+
+    voice 'sound/sound_juchang2/剧场三/13.mp3'
+    sd '这样啊，很了不起呢，凛绪'
+
+    voice 'sound/sound_juchang2/剧场三/14.mp3'
+    rio '哼~哼~凛绪很了不起~凛绪是好孩子~爸爸能听下我们的请求吗？'
+
+    voice 'sound/sound_juchang2/剧场三/15.mp3'
+    sd '约会吗...那个...'
+
+    voice 'sound/sound_juchang2/剧场三/16.mp3'
+    ik '没办法了呢....最终手段！'
+
+    show kutori_taunt
+    hide kutori_taunt withoutDissolve
+    show kutori_shy at left
+    hide kutori_taunt onlayer mayuri_cg1_layer
+    show kutori_shy withoutDissolve at chara_huangdong
+    voice 'sound/sound_juchang2/剧场三/17.mp3'
+    ik '呐，不能和我们一起约会吗？欧尼酱~（士道：啊~那....我知道了，先走了~）'
+
+    hide rio_0
+    show rio_0 at right
+    voice 'sound/sound_juchang2/剧场三/18.mp3'
+    rio '等会琴里酱会打电话联系的哦~'   
+    
+    hide kutori_taunt
+    show kutori_taunt at left
+    voice 'sound/sound_juchang2/剧场三/19.mp3'
+    ik '嘛....效果拔群呢~'
+
+    hide rio_6
+    show rio_6 at right
+    voice 'sound/sound_juchang2/剧场三/20.mp3'
+    rio '嗯！这样就能约会了呢~'
+
+    voice 'sound/sound_juchang2/剧场三/21.mp3'
+    ik '和计划一样~之后只要找个理由拍照的话，胜利就在眼前了~'
+
+    voice 'sound/sound_juchang2/剧场三/22.mp3'
+    rio '哦斯！'
+
+    # 第四幕
+    # 全员退场
+    scene BG1901
+
+    voice 'sound/sound_juchang2/剧场四/1.mp3'
+    my '听到了吗，鞠奈'
+
+    voice 'sound/sound_juchang2/剧场四/2.mp3'
+    mn '为什么我就在你身边你还要确认啊！既然鞠亚听到了，那我肯定也听到了'
+
+    voice 'sound/sound_juchang2/剧场四/3.mp3'
+    mn '话说回来'
+
+    voice 'sound/sound_juchang2/剧场四/4.mp3'
+    mn '约会呢，在天Fes举行前还挺游刃有余的嘛'
+
+    voice 'sound/sound_juchang2/剧场四/5.mp3'
+    my '不只是这样，琴里还给士道下了陷阱，为了慎重起见，我们也跟去约会地点吧'
+
+    voice 'sound/sound_juchang2/剧场四/6.mp3'
+    mn '还没决定约会地点吧，鞠亚...难道你.....'
+
+    voice 'sound/sound_juchang2/剧场四/7.mp3'
+    my '你知道吗？鞠奈，偶像是不允许有私人空间的~'
+
+    # 第五幕
+    stop music fadeout 1
+    scene white with dissolve
+    scene BG2201 with dissolve
+    play music 'bgm/剧场版bgm04.mp3'
+
+
+    show rio_0 at left
+    voice 'sound/sound_juchang2/剧场五/1.mp3'
+    rio '爸爸！早上好！'
+
+    show kutori_unhappy at right
+    voice 'sound/sound_juchang2/剧场五/2.mp3'
+    ik '好像，爸爸这个称呼已经成固定的了，嗯，早上好士道'
+
+    voice 'sound/sound_juchang2/剧场五/3.mp3'
+    sd '你们俩也早上好，今天你们也很cute哟~'
+
+    show rio_6 at left
+    voice 'sound/sound_juchang2/剧场五/4.mp3'
+    rio '嗯~凛绪为了今天打扮的很cute~'
+    hide rio_0
+
+    show kutori_shy at right
+    voice 'sound/sound_juchang2/剧场五/5.mp3'
+    ik '总感觉身体有些热，难道这就是士道的偶像力'
+    
+    voice 'sound/sound_juchang2/剧场五/6.mp3'
+    sd '没事吧琴里，发着呆'
+    
+    show kutori_az withoutDissolve at right with Dissolve(0.3) 
+    hide kutori_unhappy
+    hide kutori_shy
+    play sound 'sound/sound_juchang2/剧场五/7.mp3'
+    show kutori_az withoutDissolve huangdong at right
+    ik '唔，唔哇哇哇！'
+    stop sound
+
+    voice 'sound/sound_juchang2/剧场五/8.mp3'
+    sd '怎么了？'
+
+    voice 'sound/sound_juchang2/剧场五/9.mp3'
+    ik '没...没事'
+
+    voice 'sound/sound_juchang2/剧场五/10.mp3'
+    rio '爸爸，少女可是有很多秘密的哦~'
+
+    voice 'sound/sound_juchang2/剧场五/11.mp3'
+    sd '哦'
+
+    show kutori_unhappy at right
+    voice 'sound/sound_juchang2/剧场五/12.mp3'
+    ik '笨...笨蛋'
+    hide kutori_az withoutDissolve
+
+    # 防止切换背景时角色被清场
+    #show kutori_unhappy withoutDissolve onlayer mayuri_cg1_layer at right
+    #hide kutori_unhappy
+    #show rio_6 withoutDissolve onlayer mayuri_cg1_layer at left
+    #hide rio_6
+
+    #scene clothing_store with dissolve
+
+    #show kutori_unhappy at right 
+    #hide kutori_unhappy withoutDissolve
+    #show rio_6 at left
+    #hide rio_6 withoutDissolve
+    #==========================
+    scene clothing_store with Fade(1.5,0.5,1)
+    show rio_6 at left
+    show kutori_unhappy at right
+
+    voice 'sound/sound_juchang2/剧场五/13.mp3'
+    rio '呐，爸爸！这边的衣服可不可爱啊？'
+
+    voice 'sound/sound_juchang2/剧场五/14.mp3'
+    sd '这件不行哦，凛绪，这件露肩了'
+
+    show rio_5 at left
+    voice 'sound/sound_juchang2/剧场五/15.mp3'
+    rio '嗯....但是凛绪是偶像啊，也想变得更可爱啊'
+    hide rio_6
+
+    voice 'sound/sound_juchang2/剧场五/16.mp3'
+    sd '不是那样的哦，凛绪很可爱，那是世界级的！但是毕竟是爸爸呢！怎么能忍心看着心爱的女儿误入歧途！'
+
+    show rio_6 at left
+    voice 'sound/sound_juchang2/剧场五/17.mp3'
+    rio '是吗？谢谢哦，爸爸~'
+    hide rio_5
+
+    voice 'sound/sound_juchang2/剧场五/18.mp3'
+    sd '天使的微笑~~，凛绪，来，给你摸摸头~'
+
+    voice 'sound/sound_juchang2/剧场五/19.mp3'
+    ik '意义不明，而且只能感受到危险的气息....'
+
+    voice 'sound/sound_juchang2/剧场五/20.mp3'
+    sd '你在说什么呢琴里，不给你摸头了哦~'
+
+    voice 'sound/sound_juchang2/剧场五/21.mp3'
+    ik '谁也没说过想要啊！'
+
+    show rio_5 at left
+    voice 'sound/sound_juchang2/剧场五/22.mp3'
+    rio '凛绪想要！摸头摸头~'
+    hide rio_6
+
+    voice 'sound/sound_juchang2/剧场五/23.mp3'
+    sd '哦~我摸我摸~'
+
+    voice 'sound/sound_juchang2/剧场五/24.mp3'
+    ik '那只不过是摸好孩子的头嘛！'
+
+    voice 'sound/sound_juchang2/剧场五/25.mp3'
+    sd '啧啧啧，这你就不懂了琴里，摸头呢，可是....诶...什么来着?'
+
+    hide kutori_unhappy
+    show kutori_unhappy at center
+    show mariya_0 at right
+
+    voice 'sound/sound_juchang2/剧场五/26.mp3'
+    my '真是的士道君，四糸乃和四糸奈不是早已经深深刻在你的脑海里了吗'
+
+    voice 'sound/sound_juchang2/剧场五/27.mp3'
+    sd '啊，说得对...诶？是谁'
+
+    voice 'sound/sound_juchang2/剧场五/28.mp3'
+    mn '喂！鞠亚，你在干什么啊！'
+
+    voice 'sound/sound_juchang2/剧场五/29.mp3'
+    my '不，只是觉得现在是我登场的好时机'
+
+    hide rio_6
+    show rio_6 at left
+    voice 'sound/sound_juchang2/剧场五/30.mp3'
+    rio '鞠亚姐姐和鞠奈，是一起来约会的吗？'
+
+    voice 'sound/sound_juchang2/剧场五/31.mp3'
+    my '不，只是因为琴里想了一些不好的事情'
+
+    show kutori_az at center
+    voice 'sound/sound_juchang2/剧场五/32.mp3'
+    ik '啊，糟了！'
+
+    voice 'sound/sound_juchang2/剧场五/33.mp3'
+    my '因为纠结在其他事上完全忘了本意了啊'
+
+    voice 'sound/sound_juchang2/剧场五/34.mp3'
+    my '话说回来，关键的士道在哪里？'
+
+    voice 'sound/sound_juchang2/剧场五/35.mp3'
+    ik '那个..啊，在哪里！'
+
+    hide rio_5
+    show rio_4 at left
+    voice 'sound/sound_juchang2/剧场五/36.mp3'
+    rio '诶？爸爸刚才在这里啊？'
+
+    voice 'sound/sound_juchang2/剧场五/37.mp3'
+    my '到底在哪啊？额，在哪啊，嗯？是不是和谁在一起？'
+
+    voice 'sound/sound_juchang2/剧场五/39.mp3'
+    my '连衣裙和蓝色头发，然后手持兔子玩偶，根据分析，那是士道的心灵绿洲'
+    '只见士道的手在蓝发女孩的头发上不断摩擦，完全没有注意到蓝发女孩慌张的状态'
+
+    # 全员退场
+    scene clothing_store with dissolve
+    voice 'sound/sound_juchang2/剧场五/40.mp3'
+    sd '四~糸~乃！'
+
+    show yoshino hat sad at center
+    voice 'sound/四糸奈呜诶.mp3'
+    yn '啊啊啊啊........'
+
+    ik '住手啊士道！那孩子要哭出来了！'
+    '士道依旧不顾众人的劝阻，自顾自的继续......'
+
+    # 全员退场
+    scene clothing_store
+    voice 'sound/sound_juchang2/剧场五/41.mp3'
+    all_people '啊.......'
+
+    voice 'sound/sound_juchang2/剧场五/42.mp3'
+    rio '爸爸看起来好像很开心啊'
+
+    voice 'sound/sound_juchang2/剧场五/43.mp3'
+    ik '报警吧'
+
+    voice 'sound/sound_juchang2/剧场五/44.mp3'
+    my '你..还真是毫不手软呢...'
+
+    voice 'sound/sound_juchang2/剧场五/45.mp3'
+    my '嘛，天下Top的偶像竟然是那样的变...不仅有奇怪的思考回路，然后因为是亲近的家人，所以打击也很大吧，琴里，电话在这里'
+
+    voice 'sound/sound_juchang2/剧场五/65.mp3'
+    ik '谢了，鞠亚，喂？这里有一名变态'
+
+    voice 'sound/sound_juchang2/剧场五/47.mp3'
+    sd '啊~被治愈了啊~活着真的太好了~'
+
+    yn '呜诶........'
+
+    show natsumi_2 at right with Dissolve(0.5)
+    voice 'sound/七罪变态.mp3'
+    nm '你这个变态！'
+
+    '只见一个警察装扮的少女一拳重重的打倒了士道脸上，士道一下被打飞出去'
+
+    voice 'sound/七罪没想到.mp3'
+    nm '没...没想到还能有人在有警察在场的时候对一个小女孩做出这种行为！'
+
+    play sound 'sound/sound_juchang2/剧场五/48.mp3'
+    rio '琴里酱？不用拍照片了吗？'
+    '不用了，凛绪，我们就当什么都没看见，之后就交给警察们吧'
+
+    show tianxi_1_1 at left
+    tx '是呢....交给我们吧....'
+    my '来的这么快的吗？'
+
+    show tianxi smile_1 at left
+    tx '''嘛....在送迷路的小孩子回家的时候碰巧遇到了有趣的事情......
+    
+    那么......这位男子跟我们走一趟吧！'''
+    hide tianxi_1_1
+
+    show tianxi smile_1 as tx1 onlayer mayuri_cg1_layer at left
+    show natsumi_2 as nm1 onlayer mayuri_cg1_layer at right
+    pause 1.0
+    hide tianxi smile_1
+    hide natsumi_2
+
+    show clothing_store at huangdong
+    scene clothing_store
+
+    sd '喂！警察同志！是误会了！我是这个孩子的熟人......'
+    tx '你以为我们人民警察会相信你的鬼话吗！别挣扎了！'
+    scene black onlayer mayuri_cg1_layer with Dissolve(1.5)
+
+    scene black with dissolve
+
+    voice 'sound/sound_juchang2/剧场五/67.mp3'
+    rio '就这样，大天宫偶像盛典迎来了波折的开幕。'
+
+    voice 'sound/sound_juchang2/剧场五/68.mp3'
+    rio '但是，发生了意想不到的事情.....'
+
+    voice 'sound/sound_juchang2/剧场五/69.mp3'
+    ik '诶？协助调查？等等...我还有演出！！'
+
+    voice 'sound/sound_juchang2/剧场五/70.mp3'
+    my '居然落到了这种结局，是不是有哪里出错了'
+
+    play sound 'sound/sound_juchang2/剧场五/71.mp3'
+    my '这是什么情况啊...话说，这算是因果报应吗？'
+    stop sound
+    tx '除了小孩子之外的所有都跟我们走一趟协助调查吧，毕竟....是你们报的警...'
+    all_people_except_rio '诶........'
+
+    voice 'sound/sound_juchang2/剧场五/72.mp3'
+    rio '起伏响起的警笛声，大家都被带走了，但是，凛绪呢.....'
+
+    '几天后.........'
+
+    scene onlayer mayuri_cg1_layer
+
+    scene black with Dissolve(2)
+    scene td2_cg01 with dissolve
+    yt '啊嘞，我明明记得是偶像比赛啊？怎么变成单人演唱会了？'
+    yt '是我记错了吗？'
+
+    play sound 'sound/sound_juchang2/剧场五/74.mp3'
+    rio '凛绪呢，能唱歌真的好高兴啊！能唱更多吗？'
+    all_people '（欢呼声）'
+    rio '就这样，盛典和平的举行了，结束！'
+    stop sound
+
+    scene black with Dissolve(2)
+    $ renpy.movie_cutscene('audio/threater_edition_2_ending.ogv')
+    return
